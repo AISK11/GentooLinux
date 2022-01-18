@@ -5,18 +5,26 @@
   /* colors */
   --bg:          #222831;
   --gold:        #ffd369;
-  --red:         #ff5959;
+  --red:         #ef2929;
   --blue:        #548cff;
   --white:       #ffffff;
   --transparent: #ffffff00;
+  /* code colors */
+  --root:    var(--red);
+  --user:    #4e9a06;
+  --command: var(--white);
+  --block:   orange;
+  --dir:     var(--blue);
+  --file:    #70e000;
 }
 /*******************************************************************************
 **                                  HTML body                                 **
 *******************************************************************************/
 body {
   background-color: var(--bg);
+  color:            var(--white);
   font-family: "DejaVu Sans Mono", "Courier New", Courier, monospace;
-  font-size: 100%;
+  font-size:   100%;
   /* heading numbering */
   counter-reset: num_h1;
 }
@@ -72,7 +80,6 @@ h2 {
 **                                  paragraphs                                **
 *******************************************************************************/
 p {
-  color:     var(--white);
   font-size: 1em;
 }
 /*******************************************************************************
@@ -87,7 +94,6 @@ a {
 **                                   lists                                    **
 *******************************************************************************/
 ul {
-  color:               var(--white);
   font-size:           1em;
   font-weight:         bold;
   list-style-type:     disc;
@@ -100,9 +106,43 @@ ul {
 }
 
 ol {
-  color:               var(--white);
   font-size:           1em;
   font-weight:         bold;
   list-style-type:     decimal;
   list-style-position: outside;
+}
+/*******************************************************************************
+**                                    code                                    **
+*******************************************************************************/
+div.code {
+
+}
+
+code {
+  font-family: Consolas,monaco,monospace;
+  font-size: 1em;
+}
+
+code.root {
+  color: var(--root);
+}
+
+code.user {
+  color: var(--user);
+}
+
+code.cmd {
+  color: var(--command);
+}
+
+code.block {
+  color: var(--block);
+}
+
+code.dir {
+  color: var(--dir);
+}
+
+code.file {
+  color: var(--file);
 }
