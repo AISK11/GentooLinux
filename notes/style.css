@@ -1,0 +1,108 @@
+/*******************************************************************************
+**                          root (global) variables                           **
+*******************************************************************************/
+:root {
+  /* colors */
+  --bg:          #222831;
+  --gold:        #ffd369;
+  --red:         #ff5959;
+  --blue:        #548cff;
+  --white:       #ffffff;
+  --transparent: #ffffff00;
+}
+/*******************************************************************************
+**                                  HTML body                                 **
+*******************************************************************************/
+body {
+  background-color: var(--bg);
+  font-family: "DejaVu Sans Mono", "Courier New", Courier, monospace;
+  font-size: 100%;
+  /* heading numbering */
+  counter-reset: num_h1;
+}
+/*******************************************************************************
+**                                     hr                                     **
+*******************************************************************************/
+hr {
+  /* margins */
+  margin-top:    0.5em;
+  margin-bottom: 0.5em;
+  margin-left:   0em;
+  margin-right:  0em;
+  /* line until the end of page */
+  width: 100%;
+  /* border */
+  border-style:  solid;
+  border-width:  0em;
+  border-color:  var(--gold);
+  border-radius: 1em;
+  /* border fill */
+  height:           0.3em;
+  background-color: var(--gold);
+}
+/*******************************************************************************
+**                                  headers                                   **
+*******************************************************************************/
+h1:before {
+  /* heading numbering */
+	content:           counter(num_h1)". ";
+	counter-increment: num_h1;
+}
+
+h1 {
+  color:     var(--gold);
+  font-size: 2.5em;
+  /* heading numbering */
+  counter-reset:    num_h2;
+  background-image: linear-gradient(90deg, var(--transparent), var(--gold));
+  border-radius:    0.15em;
+}
+
+h2:before {
+  /* heading numbering */
+	content:           counter(num_h1)"." counter(num_h2)" ";
+	counter-increment: num_h2;
+}
+
+h2 {
+  color:     var(--gold);
+  font-size: 2em;
+}
+/*******************************************************************************
+**                                  paragraphs                                **
+*******************************************************************************/
+p {
+  color:     var(--white);
+  font-size: 1em;
+}
+/*******************************************************************************
+**                                   links                                    **
+*******************************************************************************/
+a {
+  color:       var(--blue);
+  font-weight: normal;
+  font-style:  italic;
+}
+/*******************************************************************************
+**                                   lists                                    **
+*******************************************************************************/
+ul {
+  color:               var(--white);
+  font-size:           1em;
+  font-weight:         bold;
+  list-style-type:     disc;
+  list-style-position: outside;
+  /* margins */
+  margin-top:    0.5em;
+  margin-bottom: 0.5em;
+  margin-left:   -1em;
+  margin-right:  1em;
+}
+
+ol {
+  color:               var(--white);
+  font-size:           1em;
+  font-weight:         bold;
+  list-style-type:     decimal;
+  list-style-position: outside;
+}
