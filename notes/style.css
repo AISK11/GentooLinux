@@ -10,12 +10,13 @@
   --white:       #ffffff;
   --transparent: #ffffff00;
   /* code colors */
-  --root:    var(--red);
-  --user:    #4e9a06;
-  --command: var(--white);
-  --block:   orange;
-  --dir:     var(--blue);
-  --file:    #70e000;
+  --root:        var(--red);
+  --user:        #4e9a06;
+  --command:     var(--white);
+  --showcommand: #707070;
+  --block:       orange;
+  --dir:         var(--blue);
+  --file:        #70e000;
 }
 /*******************************************************************************
 **                                  HTML body                                 **
@@ -28,22 +29,26 @@ body {
   /* heading numbering */
   counter-reset: num_h1;
 }
+
+div.main {
+  width: 90em;
+  border: 2px solid var(--gold);
+  border-radius: 0.5em;
+  padding: 1em;
+  /* centering horizontally */
+  margin: auto;
+}
 /*******************************************************************************
 **                                     hr                                     **
 *******************************************************************************/
 hr {
-  /* margins */
-  margin-top:    0.5em;
-  margin-bottom: 0.5em;
-  margin-left:   0em;
-  margin-right:  0em;
-  /* line until the end of page */
-  width: 100%;
-  /* border */
+  /* centering horizontally */
+  margin: auto;
+  /* (no) border */
   border-style:  solid;
   border-width:  0em;
-  border-color:  var(--gold);
-  border-radius: 1em;
+  border-color:  var(--red);
+  border-radius: 0.15em;
   /* border fill */
   height:           0.3em;
   background-color: var(--gold);
@@ -60,10 +65,9 @@ h1:before {
 h1 {
   color:     var(--gold);
   font-size: 2.5em;
+  background-image: linear-gradient(90deg, var(--transparent), var(--gold));
   /* heading numbering */
   counter-reset:    num_h2;
-  background-image: linear-gradient(90deg, var(--transparent), var(--gold));
-  border-radius:    0.15em;
 }
 
 h2:before {
@@ -115,7 +119,9 @@ ol {
 **                                    code                                    **
 *******************************************************************************/
 div.code {
-
+  border: 0px outset red;
+  background-color: black;
+  border-radius: 0.4em;
 }
 
 code {
@@ -123,26 +129,38 @@ code {
   font-size: 1em;
 }
 
-code.root {
+.root {
   color: var(--root);
 }
 
-code.user {
+.user {
   color: var(--user);
 }
 
-code.cmd {
+.cmd {
   color: var(--command);
 }
 
-code.block {
+.showcmd {
+  color: var(--showcommand);
+}
+
+.block {
   color: var(--block);
 }
 
-code.dir {
+.dir {
   color: var(--dir);
 }
 
-code.file {
+.file {
   color: var(--file);
+}
+
+.custom {
+  font-style: italic;
+}
+
+.nospace {
+  float: left;
 }

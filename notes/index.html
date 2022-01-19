@@ -11,40 +11,83 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <!-- Installation -->
-  <div>
-    <h1>Flash USB</h1>
-    <h2>Download Gentoo ISO</h2>
-    <ol>
-      <li>Download Gentoo ISO from:</li>
-      <ul>
-        <li>
-          <a href="https://www.gentoo.org/downloads/">https://www.gentoo.org/downloads/</a>
-        </li>
-      </ul>
-      <li>Verify download:</li>
-    </ol>
+  <div class="main">
+    <!-- Installation -->
+    <div>
+      <h1>Flash USB</h1>
+      <h2>Download ISO</h2>
+      <ol>
+        <li>Download Gentoo ISO from:</li>
+        <ul>
+          <li>
+            <a href="https://www.gentoo.org/downloads/">https://www.gentoo.org/downloads/</a>
+          </li>
+        </ul>
+        <li>Verify download:</li>
+        <ul>
+          <li>
+            <div class="code"><!--
+           --><code class="user">user$ </code><!--
+           --><code class="showcmd">sha1sum </code><!--
+           --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code><!--
+         --></div>
+          </li>
+        </ul>
+      </ol>
+      <h2>USB preparation</h2>
+      <ol>
+        <li class="root">Unmount all USB partitions!</li>
+        <li>Create GPT partition table:</li>
+        <ul>
+          <li>
+            <div class="code"><!--
+           --><code class="root">root# </code><!--
+           --><code class="cmd">parted -s </code><!--
+           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="cmd">mktable gpt </code><!--
+         --></div>
+          </li>
+        </ul>
+        <li>Verify new partition table:</li>
+        <ul>
+          <li>
+            <div class="code"><!--
+           --><code class="root">root# </code><!--
+           --><code class="showcmd">parted </code><!--
+           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="showcmd">(p)rint [free] </code><!--
+         --></div>
+          </li>
+        </ul>
+      </ol>
+      <h2>Flash USB with ISO</h2>
+      <ol>
+        <li>Flash ISO to USB:</li>
+        <ul>
+          <li>
+            <div class="code"><!--
+           --><code class="root">root# </code><!--
+           --><code class="cmd" >dd if=</code><!--
+           --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code><!--
+           --><code class="cmd">of=</code><!--
+           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="cmd">[bs=4M | status=progress] </code><!--
+         --></div>
+          </li>
+        </ul>
+      </ol>
+      <h2>Boot from USB</h2>
+    </div>
+    <!--  -->
+    <div>
+
+      <hr>
+    </div>
+
 
 
 
   </div>
-  <hr>
-  <!-- 2. -->
-  <div>
-
-  </div>
-  <hr>
-
-
-<div class="code">
-  <code class="root">root# </code>
-  <code class="cmd">mkdir </code>
-  <code class="dir">/boot/etc/ </code>
-  <code class="cmd">&& </code>
-  <code class="cmd">ls -l </code>
-  <code class="block">/dev/null </code>
-</div>
-
 
 </body>
 </html>
