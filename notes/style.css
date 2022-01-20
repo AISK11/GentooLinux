@@ -117,9 +117,46 @@ body {
 
   /* automatic heading numbering */
   counter-reset: num_h1 0;
+}
+/*******************************************************************************
+**                                    div                                     **
+*******************************************************************************/
+div {
+  /* remove browser margin from div elements */
+  margin: 0rem;
+  padding: 0rem;
+}
 
-  /* lower to make website night friendly */
-  filter: brightness(100%);
+div.document {
+}
+
+div.content {
+  /* size and position */
+  position: absolute;
+  top: 0rem; left: 12%;
+  width: calc(100% - 12%);
+
+  /* border that does not break math having 2 divs next to each other */
+  outline:        0rem solid var(--clr_fg);;
+  outline-offset: -0rem;
+
+  /* background */
+  background-color: var(--clr_bg);
+  /*background: var(--grd_to_right);*/
+}
+
+div.chapter {
+}
+
+div.navbar {
+  /* size and position */
+  width: 12%;
+  position: fixed; /* sticky for some reason */
+  top: 0rem; left: 0%;
+
+  /* background */
+  background-color: var(--clr_fg);
+  /*background: var(--grd_to_right);*/
 }
 /*******************************************************************************
 **                                  headings                                  **
@@ -381,7 +418,6 @@ ol.navbar {
   color: var(--clr_bg);
   list-style-type: none;
 
-
 }
 
 li.navbar {
@@ -392,80 +428,3 @@ li.navbar {
 a.navbar {
   color: var(--clr_bg);
 }
-
-
-
-
-/*******************************************************************************
-**                                content div                                 **
-*******************************************************************************/
-div {
-  /* remove browser margin from div elements */
-  margin: 0rem;
-  padding: 0rem;
-}
-
-div.document {
-}
-
-div.content {
-  /* size and position */
-  position: absolute;
-  top: 0rem; left: 10%;
-  width: calc(100% - 10%);
-
-  /* border that does not break math having 2 divs next to each other */
-  outline:        0rem solid var(--clr_fg);;
-  outline-offset: -0rem;
-
-  /* background */
-  background-color: var(--clr_bg);
-  /*background: var(--grd_to_right);*/
-}
-
-
-
-
-div.chapter {
-}
-
-
-div.navbar {
-
-  width: 35%;
-  position: fixed;
-
-  background-color: green;
-
-/*
-  background-color: var(--clr_gold);
-  position: sticky;
-
-  float: left;
-  width: 15%;
-
-  position: fixed;
-
-  outline:        0rem solid var(--clr_fg);;
-  outline-offset: -0rem;
-
-  background-color: var(--clr_gold);
-
-
-  position: sticky;
-  top: 0;
-  */
-}
-
-
-
-
-
-
-
-
-
-
-/*******************************************************************************
-**                              navigation menu                               **
-*******************************************************************************/

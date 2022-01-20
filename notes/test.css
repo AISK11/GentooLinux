@@ -1,5 +1,430 @@
-html, body
-{
-    margin: 0;
-    padding: 0;
+/*******************************************************************************
+**                          root (global) variables                           **
+*******************************************************************************/
+:root {
+  /* fonts */
+  --font_header: "VarelaRound";
+  --font_text:   "AnonymousPro";
+  --font_link:   "AnonymousPro";
+  --font_cli:    "DejavuSansMono";
+
+  /* colors */
+  --clr_transparent: #FFFFFF00;
+  --clr_white:       #FFFFFF;
+  --clr_dark:        #222831;
+  --clr_gold:        #FFD369;
+  --clr_red:         #EF2929;
+  --clr_blue:        #548CFF;
+  --clr_gentoo:      #4A406B;
+
+  /* cli colors */
+  --clr_cli_root:        var(--clr_red);
+  --clr_cli_user:        #4e9a06;
+  --clr_cli_command:     var(--clr_white);
+  --clr_cli_showcommand: #707070;
+  --clr_cli_block:       orange;
+  --clr_cli_dir:         var(--clr_blue);
+  --clr_cli_file:        #70e000;
+
+  /* gradient colors */
+  --grd_to_right:  linear-gradient(90deg, var(--clr_transparent), var(--clr_fg));
+  --grd_to_left:   linear-gradient(90deg, var(--clr_fg), var(--clr_transparent));
+  --grd_symmetric: linear-gradient(90deg, var(--clr_transparent), var(--clr_fg), var(--clr_transparent));
+
+  /* document colors */
+  --clr_bg:             var(--clr_dark);
+  --clr_fg:             var(--clr_gold);
+  --clr_text:           var(--clr_white);
+  --clr_text_important: var(--clr_red);
+  --clr_link:           var(--clr_fg);
+
+  /* roundness */
+  --roundness: 0rem;
+
+  /* margins */
+  --list_margin_vertical: 1rem;
+}
+/*******************************************************************************
+**                                custom fonts                                **
+*******************************************************************************/
+/* AnonymousPro (open source) */
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-Italic.ttf") format("truetype");
+  font-style:  italic;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style:  italic;
+}
+
+/* DejavuSansMono (open source) */
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-Oblique.ttf") format("truetype");
+  font-style:  italic;
+}
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-BoldOblique.ttf") format("truetype");
+  font-weight: bold;
+  font-style:  italic;
+}
+
+/* DejavuSansMono (open source) */
+@font-face {
+  font-family: "VarelaRound";
+  src:         url("./fonts/VarelaRound/VarelaRound-Regular.ttf") format("truetype");
+}
+/*******************************************************************************
+**                                  HTML body                                 **
+*******************************************************************************/
+body {
+  /* margin and padding */
+  /* (start divs on top left corner without margin and padding) */
+  margin:  0rem;
+  padding: 0rem;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   100%;
+  font-weight: normal;
+  font-style:  normal;
+
+  /* webpage background */
+  background-color: var(--clr_bg);
+
+  /* automatic heading numbering */
+  counter-reset: num_h1 0;
+}
+/*******************************************************************************
+**                                    div                                     **
+*******************************************************************************/
+div {
+  /* remove browser margin from div elements */
+  margin: 0rem;
+  padding: 0rem;
+}
+
+div.document {
+}
+
+div.content {
+  /* size and position */
+  position: absolute;
+  top: 0rem; left: 12%;
+  width: calc(100% - 12%);
+
+  /* border that does not break math having 2 divs next to each other */
+  outline:        0rem solid var(--clr_fg);;
+  outline-offset: -0rem;
+
+  /* background */
+  background-color: var(--clr_bg);
+  /*background: var(--grd_to_right);*/
+}
+
+div.chapter {
+}
+
+div.navbar {
+  /* size and position */
+  width: 12%;
+  position: fixed; /* sticky for some reason */
+  top: 0rem; left: 0%;
+
+  /* background */
+  background-color: var(--clr_fg);
+  /*background: var(--grd_to_right);*/
+}
+/*******************************************************************************
+**                                  headings                                  **
+*******************************************************************************/
+h1::before {
+  /* automatic heading numbering */
+	content:           counter(num_h1)" ";
+	counter-increment: num_h1 1;
+}
+
+h1 {
+  /* automatic heading numbering */
+  counter-reset: num_h2 0;
+
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_header);
+  font-size:   2.5rem;
+  font-weight: bold;
+  font-style:  normal;
+
+  /* font background */
+  background-image: var(--grd_to_right);
+
+  /* border */
+  border-radius: var(--roundness);
+}
+
+h2::before {
+  /* automatic heading numbering */
+	content:           counter(num_h1)"." counter(num_h2)" ";
+	counter-increment: num_h2 1;
+}
+
+h2 {
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_header);
+  font-size:   2.5rem;
+  font-weight: bold;
+  font-style:  normal;
+
+  /* font background */
+  background-color: var)--clr_bg;
+
+  /* colors */
+  color: var(--clr_fg);
+}
+/*******************************************************************************
+**                                     hr                                     **
+*******************************************************************************/
+hr {
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* (no) border */
+  border-width:  0rem;
+  border-style:  solid;
+  border-color:  var(--clr_fg);
+  border-radius: var(--roundness);
+
+  /* border fill */
+  height:             0.3rem;
+  background-image:   var(--grd_to_right);
+  /*background-color: var(--clr_fg);*/
+}
+/*******************************************************************************
+**                                    code                                    **
+*******************************************************************************/
+div.code {
+  /* border */
+  display:          block;
+  background-color: black;
+  border-radius:    var(--roundness);
+}
+
+code {
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_cli);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+
+}
+
+code.root {
+  /* color */
+  color: var(--clr_cli_root);
+}
+
+code.user {
+  /* color */
+  color: var(--clr_cli_user);
+}
+
+code.cmd {
+  /* color */
+  color: var(--clr_cli_command);
+}
+
+code.showcmd {
+  /* color */
+  color: var(--clr_cli_showcommand);
+}
+
+code.block {
+  /* color */
+  color: var(--clr_cli_block);
+}
+
+code.dir {
+  /* color */
+  color: var(--clr_cli_dir);
+}
+
+code.file {
+  /* color */
+  color: var(--clr_cli_file);
+}
+
+code.custom {
+  /* font */
+  font-style: italic;
+}
+/*******************************************************************************
+**                                  paragraphs                                **
+*******************************************************************************/
+p {
+  /* margin and padding */
+  margin:  0rem;
+  padding: 0rem;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+}
+/*******************************************************************************
+**                                   links                                    **
+*******************************************************************************/
+a {
+  /* text */
+  color:       var(--clr_link);
+  font-family: var(--font_link);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  italic;
+}
+/*******************************************************************************
+**                                   lists                                    **
+*******************************************************************************/
+ol {
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   1rem;
+  margin-right:  0;
+  padding:       0;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+
+  /* list style */
+  list-style-position: inside;
+  list-style-type:     decimal;
+}
+
+ol.sub {
+  /* margin and padding */
+  margin-left: 1.75rem;
+
+  /* list style */
+  list-style-type: upper-alpha;
+}
+
+ul {
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   1rem;
+  margin-right:  0;
+  padding:       0;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+
+  /* list style */
+  list-style-position: inside;
+  list-style-type:     square;
+}
+
+ul.sub {
+  /* margin and padding */
+  margin-left: 2rem;
+
+  /* list style */
+  list-style-type: disc;
+}
+
+li {
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem
+  padding:       0;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+}
+
+li.important {
+  /* text */
+  color: var(--clr_text_important);
+}
+/******************************* navigation bar *******************************/
+ol.navbar {
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: 0rem;
+  margin-left:   0rem;
+  margin-right:  0rem
+
+
+
+  color: var(--clr_bg);
+  list-style-type: none;
+
+}
+
+li.navbar {
+  color: var(--clr_bg);
+
+}
+
+a.navbar {
+  color: var(--clr_bg);
 }
