@@ -2,22 +2,27 @@
 **                          root (global) variables                           **
 *******************************************************************************/
 :root {
+  /* fonts */
+  /* monospace", "Courier New", "Courier"; */
+  --font_header: "VarelaRound";
+  --font_text:   "AnonymousPro";
+  --font_cli:    "DejavuSansMono";
+  --font_link:   "AnonymousPro";
+
   /* colors */
   --clr_transparent: #FFFFFF00;
   --clr_white:       #FFFFFF;
   --clr_dark:        #222831;
   --clr_gold:        #FFD369;
-  --clr_gold_light:  #FFFF99;
   --clr_red:         #EF2929;
   --clr_blue:        #548CFF;
   --clr_gentoo:      #4A406B;
   /* document colors */
   --clr_bg:             var(--clr_dark);
   --clr_fg:             var(--clr_gold);
-  --clr_fg_light:       var(--clr_gold);
-  --clr_text:           var(--clr_gold_light);
+  --clr_text:           var(--clr_white);
   --clr_text_important: var(--clr_red);
-  --clr_link:            var(--clr_blue);
+  --clr_link:           var(--clr_gold);
   /* gradient colors */
   --grd_to_right:  linear-gradient(90deg, var(--clr_transparent), var(--clr_fg));
   --grd_symmetric: linear-gradient(90deg, var(--clr_transparent), var(--clr_fg), var(--clr_transparent));
@@ -34,26 +39,83 @@
 
   /* rem size */
   --roundness: 0.25rem;
+
+  /* marginds */
+  --list_margin_vertical: 0.5rem;
+}
+/*******************************************************************************
+**                                custom fonts                                **
+*******************************************************************************/
+/* AnonymousPro (open source) */
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-Italic.ttf") format("truetype");
+  font-style:  italic;
+}
+@font-face {
+  font-family: "AnonymousPro";
+  src:         url("./fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style:  italic;
+}
+
+/* DejavuSansMono (open source) */
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono.ttf") format("truetype");
+}
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-Oblique.ttf") format("truetype");
+  font-style:  italic;
+}
+@font-face {
+  font-family: "DejavuSansMono";
+  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-BoldOblique.ttf") format("truetype");
+  font-weight: bold;
+  font-style:  italic;
+}
+
+/* DejavuSansMono (open source) */
+@font-face {
+  font-family: "VarelaRound";
+  src:         url("./fonts/VarelaRound/VarelaRound-Regular.ttf") format("truetype");
 }
 /*******************************************************************************
 **                                  HTML body                                 **
 *******************************************************************************/
 body {
   /* document fonts */
-  font-family: "DejaVu Sans Mono", "Courier New", Courier, monospace;
   font-size:   100%;
+  font-family: var(--font_text);
   /* document colors */
   background-color: var(--clr_bg);
   color:            var(--clr_text);
   /* heading numbering */
   counter-reset: num_h1;
+  /* lower to make website night friendly */
+  filter: brightness(100%);
 }
 /*******************************************************************************
 **                                content div                                 **
 *******************************************************************************/
 div.content {
   /* div size */
-  width: 90rem;
+  width: 80rem;
   /* centering horizontally */
   margin: auto;
   /* div border */
@@ -89,6 +151,7 @@ h1::before {
 h1 {
   /* font */
   font-size: 2.5rem;
+  font-family: var(--font_header);
   /* colors */
   color:            var(--clr_fg);
   background-image: var(--grd);
@@ -107,6 +170,7 @@ h2::before {
 h2 {
   /* font */
   font-size: 2rem;
+  font-family: var(--font_header);
   /* colors */
   color: var(--clr_fg);
 }
@@ -115,98 +179,78 @@ h2 {
 *******************************************************************************/
 a {
   /* font */
+  font-family: var(--font_link)
   font-weight: normal;
   font-style:  italic;
   /* color */
-  color:       var(--clr_link);
+  color: var(--clr_link);
 }
-
-
-
-
-
 /*******************************************************************************
 **                                   lists                                    **
 *******************************************************************************/
 ol {
   /* font */
-  font-size:           1rem;
-  font-weight:         bold;
+  font-size: 1rem;
   /* list style */
-  list-style-type:     decimal;
-  list-style-position: outside;
+  list-style-type: decimal;
+  /* margins */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
 }
-
-
 
 ol.sub {
   /* font */
   list-style-type: upper-alpha;
   font-weight:     normal;
+  /* margins */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
 }
 
-
 ul {
-  font-size:           1rem;
-  font-weight:         bold;
-  list-style-type:     disc;
-  list-style-position: outside;
+  /* font */
+  font-size:       1rem;
+  list-style-type: disc;
   /* margins */
-  margin-top:    0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
   margin-left:   -1rem;
   margin-right:  1rem;
 }
 
+li {
+  /* color */
+  color: var(--clr_text);
+  /* margins */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+}
 
-
-
+.important {
+  /* color */
+  color: var(--clr_text_important);
+}
 
 /*******************************************************************************
 **                                  paragraphs                                **
 *******************************************************************************/
 p {
+  /* font */
   font-size: 1rem;
 }
-
-
-/*******************************************************************************
-**                              navigation menu                               **
-*******************************************************************************/
-div.navbar {
-  width: 90em;
-  /* centering horizontally */
-  margin: auto;
-}
-
-ul.navbar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 0.15em solid var(--clr_fg);
-  background-color: var(--clr_bg);
-}
-
-li.navbar {
-  display: inline;
-}
-
-
-
 
 
 /*******************************************************************************
 **                                    code                                    **
 *******************************************************************************/
 div.code {
-  border: 0rem outset clr_red;
+  /* border */
   background-color: black;
-  border-radius: 0.4rem;
+  border-radius:    var(--roundness);
 }
 
 code {
-  font-family: Consolas,monaco,monospace;
+  font-family: var(--font_cli);
   font-size: 1rem;
 }
 
@@ -240,4 +284,30 @@ code {
 
 .custom {
   font-style: italic;
+}
+
+
+
+
+
+/*******************************************************************************
+**                              navigation menu                               **
+*******************************************************************************/
+div.navbar {
+  width: 90em;
+  /* centering horizontally */
+  margin: auto;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0.15em solid var(--clr_fg);
+  background-color: var(--clr_bg);
+}
+
+li.navbar {
+  display: inline;
 }
