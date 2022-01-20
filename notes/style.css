@@ -5,8 +5,8 @@
   /* fonts */
   --font_header: "VarelaRound";
   --font_text:   "AnonymousPro";
-  --font_cli:    "DejavuSansMono";
   --font_link:   "AnonymousPro";
+  --font_cli:    "DejavuSansMono";
 
   /* colors */
   --clr_transparent: #FFFFFF00;
@@ -41,7 +41,8 @@
   /* roundness */
   --roundness: 0rem;
 
-
+  /* margins */
+  --list_margin_vertical: 1rem;
 }
 /*******************************************************************************
 **                                custom fonts                                **
@@ -99,24 +100,266 @@
 **                                  HTML body                                 **
 *******************************************************************************/
 body {
-  /* start divs on top left corner without margin and padding */
+  /* margin and padding */
+  /* (start divs on top left corner without margin and padding) */
   margin:  0rem;
   padding: 0rem;
 
-  /* document fonts */
-  font-size:   100%;
+  /* text */
+  color:       var(--clr_text);
   font-family: var(--font_text);
+  font-size:   100%;
+  font-weight: normal;
+  font-style:  normal;
 
-  /* document colors */
-  color:            var(--clr_text);
+  /* webpage background */
   background-color: var(--clr_bg);
 
-  /* heading numbering */
-  counter-reset: num_h1;
+  /* automatic heading numbering */
+  counter-reset: num_h1 0;
 
   /* lower to make website night friendly */
   filter: brightness(100%);
 }
+/*******************************************************************************
+**                                  headings                                  **
+*******************************************************************************/
+h1::before {
+  /* automatic heading numbering */
+	content:           counter(num_h1)" ";
+	counter-increment: num_h1 1;
+}
+
+h1 {
+  /* automatic heading numbering */
+  counter-reset: num_h2 0;
+
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_header);
+  font-size:   2.5rem;
+  font-weight: bold;
+  font-style:  normal;
+
+  /* font background */
+  background-image: var(--grd_to_right);
+
+  /* border */
+  border-radius: var(--roundness);
+}
+
+h2::before {
+  /* automatic heading numbering */
+	content:           counter(num_h1)"." counter(num_h2)" ";
+	counter-increment: num_h2 1;
+}
+
+h2 {
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_header);
+  font-size:   2.5rem;
+  font-weight: bold;
+  font-style:  normal;
+
+  /* font background */
+  background-color: var)--clr_bg;
+
+  /* colors */
+  color: var(--clr_fg);
+}
+/*******************************************************************************
+**                                     hr                                     **
+*******************************************************************************/
+hr {
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* (no) border */
+  border-width:  0rem;
+  border-style:  solid;
+  border-color:  var(--clr_fg);
+  border-radius: var(--roundness);
+
+  /* border fill */
+  height:             0.3rem;
+  background-image:   var(--grd_to_right);
+  /*background-color: var(--clr_fg);*/
+}
+/*******************************************************************************
+**                                    code                                    **
+*******************************************************************************/
+div.code {
+  /* border */
+  background-color: black;
+  border-radius:    var(--roundness);
+}
+
+code {
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_cli);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+}
+
+code.root {
+  /* color */
+  color: var(--clr_cli_root);
+}
+
+code.user {
+  /* color */
+  color: var(--clr_cli_user);
+}
+
+code.cmd {
+  /* color */
+  color: var(--clr_cli_command);
+}
+
+code.showcmd {
+  /* color */
+  color: var(--clr_cli_showcommand);
+}
+
+code.block {
+  /* color */
+  color: var(--clr_cli_block);
+}
+
+code.dir {
+  /* color */
+  color: var(--clr_cli_dir);
+}
+
+code.file {
+  /* color */
+  color: var(--clr_cli_file);
+}
+
+code.custom {
+  /* font */
+  font-style: italic;
+}
+/*******************************************************************************
+**                                  paragraphs                                **
+*******************************************************************************/
+p {
+  /* margin and padding */
+  margin:  0rem;
+  padding: 0rem;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+}
+/*******************************************************************************
+**                                   links                                    **
+*******************************************************************************/
+a {
+  /* text */
+  color:       var(--clr_link);
+  font-family: var(--font_link);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  italic;
+}
+
+
+
+
+
+
+/*******************************************************************************
+**                                   lists                                    **
+*******************************************************************************/
+ol {
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0;
+  margin-right:  0;
+  padding:       0;
+
+  /* text */
+  color:       var(--clr_text);
+  font-family: var(--font_text);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+
+
+
+  /* list style */
+  list-style-type: decimal;
+
+
+}
+
+ol.sub {
+  /* font */
+  list-style-type: upper-alpha;
+
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   -0.75rem;
+  margin-right:  0rem
+}
+
+ul {
+  /* font */
+  font-size:       1rem;
+  list-style-type: disc;
+
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   -1.5rem;
+  margin-right:  0rem;
+}
+
+li {
+  /* color */
+  color: var(--clr_text);
+
+  /* margin and padding */
+  margin-top:    var(--list_margin_vertical);
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem
+}
+
+.important {
+  /* color */
+  color: var(--clr_text_important);
+}
+
+
+
 /*******************************************************************************
 **                                content div                                 **
 *******************************************************************************/
@@ -129,30 +372,60 @@ div {
 div.document {
 }
 
-div.navigation_menu {
+
+
+
+div.nav_top {
+  /* position and width/height */
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+
+  /* border that does not break math having 2 divs next to each other */
+  outline:        0.0rem solid var(--clr_red);;
+  outline-offset: -0.0rem;
+
+  /* background */
+  background-color: var(--clr_fg);
+}
+
+div.nav_top_entry {
+  /* position and width/height */
+  width: 10%;
+  height: 2.5rem;
+
+  /* border that does not break math having 2 divs next to each other */
+  outline:        0.0rem solid var(--clr_bg);;
+  outline-offset: -0.0rem;
+
+  background-color: var(--clr_fg);
+
+}
+
+
+
+
+div.nav_left {
   /* size and position */
   float: left;
   width: 15%;
 
   /* border that does not break math having 2 divs next to each other */
-  outline: 0rem solid var(--clr_fg);;
+  outline:        0rem solid var(--clr_fg);;
   outline-offset: -0rem;
 
   /* background */
-  /*background-color: var(--clr_fg);*/
-  background: var(--grd_to_left);
-
-  color: var(--clr_bg);
+  background-color: var(--clr_red);
+  /*background: var(--grd_to_left);*/
 }
 
 div.content {
   /* size and position */
   float: right;
   width: calc(100% - 15%);
-  margin: 0rem;
 
   /* border that does not break math having 2 divs next to each other */
-  outline: 0rem solid var(--clr_fg);;
+  outline:        0rem solid var(--clr_fg);;
   outline-offset: -0rem;
 
   /* background */
@@ -160,207 +433,42 @@ div.content {
   /*background: var(--grd_to_right);*/
 }
 
-
-
-
-
-
-/*******************************************************************************
-**                                     hr                                     **
-*******************************************************************************/
-hr {
-  /* centering horizontally */
-  margin: auto;
-  /* (no) border */
-  border-style:  solid;
-  border-width:  0rem;
-  border-color:  var(--clr_fg);
-  border-radius: var(--roundness);
-  /* border fill */
-  height: 0.3rem;
-  /*background-color: var(--clr_fg);*/
-  background-image: var(--grd);
-}
-/*******************************************************************************
-**                                  headers                                   **
-*******************************************************************************/
-h1::before {
-  /* heading numbering */
-	content:           counter(num_h1)". ";
-	counter-increment: num_h1;
-}
-
-h1 {
-  /* font */
-  font-size: 2.5rem;
-  font-family: var(--font_header);
-  /* colors */
-  color:            var(--clr_fg);
-  background-image: var(--grd_to_right);
-  /* border */
-  border-radius: var(--roundness);
-  /* heading numbering */
-  counter-reset: num_h2;
-
-  margin: 0rem;
-  padding: 0rem;
-
-}
-
-h2::before {
-  /* heading numbering */
-	content:           counter(num_h1)"." counter(num_h2)" ";
-	counter-increment: num_h2;
-}
-
-h2 {
-  margin: 0rem;
-  padding: 0rem;
-  /* font */
-  font-size: 2rem;
-  font-family: var(--font_header);
-  /* colors */
-  color: var(--clr_fg);
-}
-/*******************************************************************************
-**                                   lists                                    **
-*******************************************************************************/
-ol {
-  /* font */
-  font-size: 1rem;
-  /* list style */
-  list-style-type: decimal;
-  /* margins */
-  margin-top:    var(--list_margin_vertical);
-  margin-bottom: var(--list_margin_vertical);
-}
-
-ol.sub {
-  /* font */
-  list-style-type: upper-alpha;
-  /* margins */
-  margin-top:    var(--list_margin_vertical);
-  margin-bottom: var(--list_margin_vertical);
-}
-
-ul {
-  /* font */
-  font-size:       1rem;
-  list-style-type: disc;
-  /* margins */
-  margin-top:    var(--list_margin_vertical);
-  margin-bottom: var(--list_margin_vertical);
-  margin-left:   -1rem;
-  margin-right:  1rem;
-}
-
-li {
-  /* color */
-  color: var(--clr_text);
-  /* margins */
-  margin-top:    var(--list_margin_vertical);
-  margin-bottom: var(--list_margin_vertical);
-
-}
-
-.important {
-  /* color */
-  color: var(--clr_text_important);
-}
-/*******************************************************************************
-**                                   links                                    **
-*******************************************************************************/
-a {
-  /* font */
-  font-family: var(--font_link)
-  font-weight: normal;
-  font-style:  italic;
-  /* color */
-  color: var(--clr_link);
-}
-/*******************************************************************************
-**                                  paragraphs                                **
-*******************************************************************************/
-p {
-  /* font */
-  font-size: 1rem;
-
-  margin: 0rem;
-  padding: 0rem;
-}
-/*******************************************************************************
-**                                    code                                    **
-*******************************************************************************/
-div.code {
-  /* border */
-  background-color: black;
-  border-radius:    var(--roundness);
-}
-
-code {
-  /* font */
-  font-family: var(--font_cli);
-  font-size:   1rem;
-}
-
-.root {
-  /* color */
-  color: var(--clr_cli_root);
-}
-
-.user {
-  /* color */
-  color: var(--clr_cli_user);
-}
-
-.cmd {
-  /* color */
-  color: var(--clr_cli_command);
-}
-
-.showcmd {
-  /* color */
-  color: var(--clr_cli_showcommand);
-}
-
-.block {
-  /* color */
-  color: var(--clr_cli_block);
-}
-
-.dir {
-  /* color */
-  color: var(--clr_cli_dir);
-}
-
-.file {
-  /* color */
-  color: var(--clr_cli_file);
-}
-
-.custom {
-  /* font */
-  font-style: italic;
-}
-
-
-
-
-
 /*******************************************************************************
 **                              navigation menu                               **
 *******************************************************************************/
+ol.nav_left {
+  /* chapter numbering */
+  /*
+  counter-reset: nav_counter
+  */
+
+  /* margin and padding */
 
 
-ul.navbar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  border: 0.15em solid var(--clr_fg);
-  background-color: var(--clr_bg);
 }
 
-li.navbar {
-  display: inline;
+li.nav_left {
+  /* chapter numbering (do not display default <ol> numbers */
+  /*
+  display: block
+  */
+
+
+}
+
+
+li.nav:before {
+  /* chapter numbering */
+  /*
+  content: counters(nav_counter, ".") " ";
+  counter-increment: nav_counter
+  */
+}
+
+a.nav_left {
+  /* font */
+  font-style:  normal;
+  font-weight: bold;
+  color: var(--clr_bg);
+
 }
