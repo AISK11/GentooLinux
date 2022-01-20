@@ -3,7 +3,6 @@
 *******************************************************************************/
 :root {
   /* fonts */
-  /* monospace", "Courier New", "Courier"; */
   --font_header: "VarelaRound";
   --font_text:   "AnonymousPro";
   --font_cli:    "DejavuSansMono";
@@ -17,18 +16,8 @@
   --clr_red:         #EF2929;
   --clr_blue:        #548CFF;
   --clr_gentoo:      #4A406B;
-  /* document colors */
-  --clr_bg:             var(--clr_dark);
-  --clr_fg:             var(--clr_gold);
-  --clr_text:           var(--clr_white);
-  --clr_text_important: var(--clr_red);
-  --clr_link:           var(--clr_gold);
-  /* gradient colors */
-  --grd_to_right:  linear-gradient(90deg, var(--clr_transparent), var(--clr_fg));
-  --grd_symmetric: linear-gradient(90deg, var(--clr_transparent), var(--clr_fg), var(--clr_transparent));
-  --grd:           var(--grd_to_right);
 
-  /* code colors */
+  /* cli colors */
   --clr_cli_root:        var(--clr_red);
   --clr_cli_user:        #4e9a06;
   --clr_cli_command:     var(--clr_white);
@@ -37,11 +26,22 @@
   --clr_cli_dir:         var(--clr_blue);
   --clr_cli_file:        #70e000;
 
-  /* rem size */
-  --roundness: 0.25rem;
+  /* gradient colors */
+  --grd_to_right:  linear-gradient(90deg, var(--clr_transparent), var(--clr_fg));
+  --grd_to_left:   linear-gradient(90deg, var(--clr_fg), var(--clr_transparent));
+  --grd_symmetric: linear-gradient(90deg, var(--clr_transparent), var(--clr_fg), var(--clr_transparent));
 
-  /* marginds */
-  --list_margin_vertical: 0.5rem;
+  /* document colors */
+  --clr_bg:             var(--clr_dark);
+  --clr_fg:             var(--clr_gold);
+  --clr_text:           var(--clr_white);
+  --clr_text_important: var(--clr_red);
+  --clr_link:           var(--clr_fg);
+
+  /* roundness */
+  --roundness: 0rem;
+
+
 }
 /*******************************************************************************
 **                                custom fonts                                **
@@ -99,30 +99,72 @@
 **                                  HTML body                                 **
 *******************************************************************************/
 body {
+  /* start divs on top left corner without margin and padding */
+  margin:  0rem;
+  padding: 0rem;
+
   /* document fonts */
   font-size:   100%;
   font-family: var(--font_text);
+
   /* document colors */
-  background-color: var(--clr_bg);
   color:            var(--clr_text);
+  background-color: var(--clr_bg);
+
   /* heading numbering */
   counter-reset: num_h1;
+
   /* lower to make website night friendly */
   filter: brightness(100%);
 }
 /*******************************************************************************
 **                                content div                                 **
 *******************************************************************************/
-div.content {
-  /* div size */
-  width: 80rem;
-  /* centering horizontally */
-  margin: auto;
-  /* div border */
-  border:        0.125rem solid var(--clr_fg);
-  border-radius: var(--roundness);
-  padding:       1rem;
+div {
+  /* remove browser margin from div elements */
+  margin: 0rem;
+  padding: 0rem;
 }
+
+div.document {
+}
+
+div.navigation_menu {
+  /* size and position */
+  float: left;
+  width: 15%;
+
+  /* border that does not break math having 2 divs next to each other */
+  outline: 0rem solid var(--clr_fg);;
+  outline-offset: -0rem;
+
+  /* background */
+  /*background-color: var(--clr_fg);*/
+  background: var(--grd_to_left);
+
+  color: var(--clr_bg);
+}
+
+div.content {
+  /* size and position */
+  float: right;
+  width: calc(100% - 15%);
+  margin: 0rem;
+
+  /* border that does not break math having 2 divs next to each other */
+  outline: 0rem solid var(--clr_fg);;
+  outline-offset: -0rem;
+
+  /* background */
+  background-color: var(--clr_bg);
+  /*background: var(--grd_to_right);*/
+}
+
+
+
+
+
+
 /*******************************************************************************
 **                                     hr                                     **
 *******************************************************************************/
@@ -154,11 +196,15 @@ h1 {
   font-family: var(--font_header);
   /* colors */
   color:            var(--clr_fg);
-  background-image: var(--grd);
+  background-image: var(--grd_to_right);
   /* border */
   border-radius: var(--roundness);
   /* heading numbering */
   counter-reset: num_h2;
+
+  margin: 0rem;
+  padding: 0rem;
+
 }
 
 h2::before {
@@ -168,22 +214,13 @@ h2::before {
 }
 
 h2 {
+  margin: 0rem;
+  padding: 0rem;
   /* font */
   font-size: 2rem;
   font-family: var(--font_header);
   /* colors */
   color: var(--clr_fg);
-}
-/*******************************************************************************
-**                                   links                                    **
-*******************************************************************************/
-a {
-  /* font */
-  font-family: var(--font_link)
-  font-weight: normal;
-  font-style:  italic;
-  /* color */
-  color: var(--clr_link);
 }
 /*******************************************************************************
 **                                   lists                                    **
@@ -201,7 +238,6 @@ ol {
 ol.sub {
   /* font */
   list-style-type: upper-alpha;
-  font-weight:     normal;
   /* margins */
   margin-top:    var(--list_margin_vertical);
   margin-bottom: var(--list_margin_vertical);
@@ -224,22 +260,34 @@ li {
   /* margins */
   margin-top:    var(--list_margin_vertical);
   margin-bottom: var(--list_margin_vertical);
+
 }
 
 .important {
   /* color */
   color: var(--clr_text_important);
 }
-
+/*******************************************************************************
+**                                   links                                    **
+*******************************************************************************/
+a {
+  /* font */
+  font-family: var(--font_link)
+  font-weight: normal;
+  font-style:  italic;
+  /* color */
+  color: var(--clr_link);
+}
 /*******************************************************************************
 **                                  paragraphs                                **
 *******************************************************************************/
 p {
   /* font */
   font-size: 1rem;
+
+  margin: 0rem;
+  padding: 0rem;
 }
-
-
 /*******************************************************************************
 **                                    code                                    **
 *******************************************************************************/
@@ -250,39 +298,48 @@ div.code {
 }
 
 code {
+  /* font */
   font-family: var(--font_cli);
-  font-size: 1rem;
+  font-size:   1rem;
 }
 
 .root {
+  /* color */
   color: var(--clr_cli_root);
 }
 
 .user {
+  /* color */
   color: var(--clr_cli_user);
 }
 
 .cmd {
+  /* color */
   color: var(--clr_cli_command);
 }
 
 .showcmd {
+  /* color */
   color: var(--clr_cli_showcommand);
 }
 
 .block {
+  /* color */
   color: var(--clr_cli_block);
 }
 
 .dir {
+  /* color */
   color: var(--clr_cli_dir);
 }
 
 .file {
+  /* color */
   color: var(--clr_cli_file);
 }
 
 .custom {
+  /* font */
   font-style: italic;
 }
 
@@ -293,11 +350,7 @@ code {
 /*******************************************************************************
 **                              navigation menu                               **
 *******************************************************************************/
-div.navbar {
-  width: 90em;
-  /* centering horizontally */
-  margin: auto;
-}
+
 
 ul.navbar {
   list-style-type: none;
