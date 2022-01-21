@@ -123,7 +123,7 @@ body {
 *******************************************************************************/
 div {
   /* remove browser margin from div elements */
-  margin: 0rem;
+  margin:  0rem;
   padding: 0rem;
 }
 
@@ -133,7 +133,7 @@ div.document {
 div.content {
   /* size and position */
   position: absolute;
-  top: 0rem; left: 12%;
+  top:   0rem; left: 12%;
   width: calc(100% - 12%);
 
   /* border that does not break math having 2 divs next to each other */
@@ -150,9 +150,10 @@ div.chapter {
 
 div.navbar {
   /* size and position */
-  width: 12%;
+  width:    11%;
   position: fixed; /* sticky for some reason */
-  top: 0rem; left: 0%;
+  top:      0rem;
+  left:     0%;
 
   /* background */
   /*background-color: var(--clr_gentoo);*/
@@ -209,12 +210,12 @@ h2 {
   /* text */
   color:       var(--clr_fg);
   font-family: var(--font_header);
-  font-size:   2.5rem;
+  font-size:   1.75rem;
   font-weight: bold;
   font-style:  normal;
 
   /* font background */
-  background-color: var)--clr_bg;
+  background-color: var(--clr_bg);
 
   /* colors */
   color: var(--clr_fg);
@@ -245,6 +246,19 @@ hr {
 **                                    code                                    **
 *******************************************************************************/
 div.code {
+  /* margin and padding */
+  margin-left: 1.5rem;
+
+  /* border */
+  display:          block;
+  background-color: black;
+  border-radius:    var(--roundness);
+}
+
+div.subcode {
+  /* margin and padding */
+  margin-left: 1rem;
+
   /* border */
   display:          block;
   background-color: black;
@@ -258,7 +272,6 @@ code {
   font-size:   1rem;
   font-weight: normal;
   font-style:  normal;
-
 }
 
 code.root {
@@ -303,6 +316,12 @@ code.custom {
 /*******************************************************************************
 **                                  paragraphs                                **
 *******************************************************************************/
+br {
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: calc(var(--list_margin_vertical)/3);
+}
+
 p {
   /* margin and padding */
   margin:  0rem;
@@ -314,6 +333,16 @@ p {
   font-size:   1rem;
   font-weight: normal;
   font-style:  normal;
+
+  display: inline;
+}
+
+p.bold {
+  font-weight: bold;
+}
+
+p.italic {
+  font-style: italic;
 }
 /*******************************************************************************
 **                                   links                                    **
@@ -334,8 +363,8 @@ ol {
   margin-top:    var(--list_margin_vertical);
   margin-bottom: var(--list_margin_vertical);
   margin-left:   1rem;
-  margin-right:  0;
-  padding:       0;
+  margin-right:  0rem;
+  padding:       0rem;
 
   /* text */
   color:       var(--clr_text);
@@ -362,8 +391,8 @@ ul {
   margin-top:    var(--list_margin_vertical);
   margin-bottom: var(--list_margin_vertical);
   margin-left:   1rem;
-  margin-right:  0;
-  padding:       0;
+  margin-right:  0rem;
+  padding:       0rem;
 
   /* text */
   color:       var(--clr_text);
@@ -379,7 +408,7 @@ ul {
 
 ul.sub {
   /* margin and padding */
-  margin-left: 2rem;
+  margin-left: 1.75rem;
 
   /* list style */
   list-style-type: disc;
@@ -391,7 +420,7 @@ li {
   margin-bottom: var(--list_margin_vertical);
   margin-left:   0rem;
   margin-right:  0rem
-  padding:       0;
+  padding:       0rem;
 
   /* text */
   color:       var(--clr_text);
@@ -401,7 +430,7 @@ li {
   font-style:  normal;
 }
 
-li.important {
+.important {
   /* text */
   color: var(--clr_text_important);
 }
@@ -411,7 +440,7 @@ a.navbar {
   display: block;
 
   /* margin and padding */
-  padding: 0;
+  padding: 0rem;
 
   /* text */
   color:       var(--clr_bg);
@@ -431,7 +460,7 @@ a.navbar {
 
 a.navbar:hover {
   /* text */
-  color:       var(--clr_fg);
+  color: var(--clr_fg);
 
   /* background */
   background-color: var(--clr_bg);
@@ -439,13 +468,8 @@ a.navbar:hover {
 
 a.navbar:active {
   /* text */
-  color:       var(--clr_fg);
+  color: var(--clr_fg);
 
   /* background */
   background-color: var(--clr_text_important);
-}
-
-
-div.navbar_entry {
-
 }

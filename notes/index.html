@@ -16,22 +16,12 @@
   <body>
     <div class="document">
       <!--
-      navigation menu top
-      -->
-
-      <!--
       navigation menu left
       -->
       <div class="navbar">
-        <div class="navbar_entry">
-          <a class="navbar" href="#section_1">1 Flash USB</a>
-        </div>
-        <div class="navbar_entry">
-          <a class="navbar" href="#section_2">2 Pre-installation</a>
-        </div>
-        <div class="navbar_entry">
-          <a class="navbar" href="#section_3">3 Installation</a>
-        </div>
+        <a class="navbar" href="#section_1">1 Flash USB</a>
+        <a class="navbar" href="#section_2">2 Pre-installation</a>
+        <a class="navbar" href="#section_3">3 Installation</a>
       </div>
       <!--
       notes div
@@ -49,62 +39,52 @@
               </li>
             </ul>
             <li>Verify download:</li>
-            <ul class="sub">
-              <div class="code">
-                <code class="user">user$ </code><!--
-             --><code class="showcmd">sha1sum </code><!--
-             --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code>
-              </div>
-            </ul>
+            <div class="code">
+              <code class="user">user$ </code><!--
+           --><code class="showcmd">sha1sum </code><!--
+           --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code>
+            </div>
           </ol>
           <hr>
           <h2 id="section_1.2">USB preparation</h2>
           <ol>
             <li class="important">Unmount all USB partitions!</li>
             <li>Create GPT partition table:</li>
-            <ul class="sub">
-              <div class="code">
-                <code class="root">root# </code><!--
-             --><code class="cmd">parted -s </code><!--
-             --><code class="block custom">&lt/dev/sdX&gt; </code><!--
-             --><code class="cmd">mktable gpt </code>
-              </div>
-            </ul>
+            <div class="code">
+              <code class="root">root# </code><!--
+           --><code class="cmd">parted -s </code><!--
+           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="cmd">mktable gpt </code>
+            </div>
             <li>Verify new partition table:</li>
-            <ul class="sub">
-              <div class="code">
-                <code class="root">root# </code><!--
-             --><code class="showcmd">parted </code><!--
-             --><code class="block custom">&lt/dev/sdX&gt; </code><!--
-             --><code class="showcmd">(p)rint [free] </code>
-              </div>
-            </ul>
+            <div class="code">
+              <code class="root">root# </code><!--
+           --><code class="showcmd">parted </code><!--
+           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="showcmd">(p)rint [free] </code>
+            </div>
           </ol>
           <hr>
           <h2 id="section_1.3">Flash USB with ISO</h2>
           <ol>
             <li>Flash ISO to USB:</li>
-            <ul class="sub">
-              <div class="code">
-                <code class="root">root# </code><!--
-             --><code class="cmd" >dd if=</code><!--
-             --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code><!--
-             --><code class="cmd">of=</code><!--
-             --><code class="block custom">&lt/dev/sdX&gt; </code><!--
-             --><code class="cmd">[conv=fsync] [bs=1M] [status=progress] </code>
-              </div>
-            </ul>
+            <div class="code">
+              <code class="root">root# </code><!--
+           --><code class="cmd">dd if=</code><!--
+           --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code><!--
+           --><code class="cmd">of=</code><!--
+           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="cmd">[conv=fsync] [bs=1M] [status=progress] </code>
+            </div>
           </ol>
           <hr>
           <h2 id="section_1.4">Boot from USB</h2>
           <ol>
             <li>Reboot computer:</li>
-              <ul class="sub">
-                <div class="code">
-                  <code class="root">root# </code><!--
-                --><code class="cmd" >reboot</code>
-                </div>
-              </ul>
+              <div class="code">
+                <code class="root">root# </code><!--
+              --><code class="cmd" >reboot</code>
+              </div>
             <li>Make sure, that secure boot is disabled:</li>
             <ol class="sub">
               <li>During POST press key to access BIOS/UEFI:</li>
@@ -132,13 +112,84 @@
         <!-- Pre-installation -->
         <div class="chapter">
           <h1 id="section_2">Pre-installation</h1>
+          <h2 id="section_2.1">Disk information gathering</h2>
+            <p class="bold">Sector: </p>
+            <p>smallest unit size on a disk. Usually 512 bytes, but some hard disks
+have 4096.</p>
+            <br>
+            <p class="bold">Block: </p>
+            <p>allocation size that FS uses. Cannot be smaller than size of the
+sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
+          <ol>
+            <li>Gather information about disks:</li>
+            <ol class="sub">
+              <li>Find disks:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">lsblk [-p] [-f] [-a] </code>
+              </div>
+              <div class="code">
+                <code class="user">livecd$ </code><!--
+             --><code class="showcmd">fdisk -l </code><!--
+             --><code class="block custom">[/dev/sdX] </code>
+              </div>
+              </ul>
+              <li>Find disk partitions:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">parted </code><!--
+             --><code class="block custom">&lt/dev/sdX&gt </code><!--
+             --><code class="showcmd">(p)rint [free] </code>
+              </div>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">gdisk -l </code><!--
+             --><code class="block custom">&lt/dev/sdX&gt </code>
+              </div>
+              <li>Other disk info:</li>
+              <ul class="sub">
+                <li>Disk size in bytes:</li>
+                <div class="subcode">
+                  <code class="root">livecd# </code><!--
+                --><code class="showcmd">blockdev [-v] --getsize64 </code><!--
+                --><code class="block custom">&lt/dev/sdX&gt </code>
+                </div>
+                <li>Disk read only status:</li>
+                <div class="subcode">
+                  <code class="root">livecd# </code><!--
+                --><code class="showcmd">blockdev [-v] --getro </code><!--
+                --><code class="block custom">&lt/dev/sdX&gt </code>
+                </div>
+              </ul>
+            </ol>
+          </ol>
+          <hr>
+          <h2 id="section_2.1">Check disk for bad sectors</h2>
+          <ol>
+            <li class="important">Unmount all disk partitions!</li>
+            <li>Read-only test:</li>
+            <div class="code">
+              <code class="root">livecd# </code><!--
+           --><code class="cmd">badblocks [-b 4096] [-v] [-s] </code><!--
+           --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
+           --><code class="cmd">| tee -a </code><!--
+           --><code class="file custom">&ltOUTPUT_FILE&gt </code>
+            </div>
+            <li>Read-write test (ERASE ALL DATA):</li>
+            <div class="code">
+              <code class="root">livecd# </code><!--
+           --><code class="cmd">badblocks -w [-t 0xaa] [-b 4096] [-v] [-s] </code><!--
+           --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
+           --><code class="cmd">| tee -a </code><!--
+           --><code class="file custom">&ltOUTPUT_FILE&gt </code>
+            </div>
+          </ol>
           <hr>
         </div>
         <!-- Installation -->
         <div class="chapter">
           <h1 id="section_3">Installation</h1>
 
-          <hr>
         </div>
 
 
@@ -149,3 +200,9 @@
 
   </body>
 </html>
+<!--
+JS free
+cookies free
+open source fonts
+no 3rd part resources
+-->
