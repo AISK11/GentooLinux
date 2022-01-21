@@ -50,21 +50,21 @@
 /* AnonymousPro (open source) */
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./fonts/AnonymousPro/AnonymousPro-Regular.ttf") format("truetype");
+  src:         url("./src/fonts/AnonymousPro/AnonymousPro-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./fonts/AnonymousPro/AnonymousPro-Bold.ttf") format("truetype");
+  src:         url("./src/fonts/AnonymousPro/AnonymousPro-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./fonts/AnonymousPro/AnonymousPro-Italic.ttf") format("truetype");
+  src:         url("./src/fonts/AnonymousPro/AnonymousPro-Italic.ttf") format("truetype");
   font-style:  italic;
 }
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf") format("truetype");
+  src:         url("./src/fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf") format("truetype");
   font-weight: bold;
   font-style:  italic;
 }
@@ -72,21 +72,21 @@
 /* DejavuSansMono (open source) */
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./fonts/DejavuSansMono/DejaVuSansMono.ttf") format("truetype");
+  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono.ttf") format("truetype");
 }
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-Bold.ttf") format("truetype");
+  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-Oblique.ttf") format("truetype");
+  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono-Oblique.ttf") format("truetype");
   font-style:  italic;
 }
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./fonts/DejavuSansMono/DejaVuSansMono-BoldOblique.ttf") format("truetype");
+  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono-BoldOblique.ttf") format("truetype");
   font-weight: bold;
   font-style:  italic;
 }
@@ -94,7 +94,7 @@
 /* DejavuSansMono (open source) */
 @font-face {
   font-family: "VarelaRound";
-  src:         url("./fonts/VarelaRound/VarelaRound-Regular.ttf") format("truetype");
+  src:         url("./src/fonts/VarelaRound/VarelaRound-Regular.ttf") format("truetype");
 }
 /*******************************************************************************
 **                                  HTML body                                 **
@@ -155,7 +155,7 @@ div.navbar {
   top: 0rem; left: 0%;
 
   /* background */
-  background-color: var(--clr_fg);
+  /*background-color: var(--clr_gentoo);*/
   /*background: var(--grd_to_right);*/
 }
 /*******************************************************************************
@@ -406,25 +406,46 @@ li.important {
   color: var(--clr_text_important);
 }
 /******************************* navigation bar *******************************/
-ol.navbar {
-  /* margin and padding */
-  margin-top:    0rem;
-  margin-bottom: 0rem;
-  margin-left:   0rem;
-  margin-right:  0rem
-
-
-
-  color: var(--clr_bg);
-  list-style-type: none;
-
-}
-
-li.navbar {
-  color: var(--clr_bg);
-
-}
-
 a.navbar {
-  color: var(--clr_bg);
+  /* display (fill whole line) */
+  display: block;
+
+  /* margin and padding */
+  padding: 0;
+
+  /* text */
+  color:       var(--clr_bg);
+  font-family: var(--font_header);
+  font-size:   1rem;
+  font-weight: bold;
+  font-style:  normal;
+  text-decoration: none; /* no underline */
+
+  /* background */
+  background-color: var(--clr_fg);;
+
+  outline-color: black;
+  outline-width: 1px;
+  outline-style: solid;
+}
+
+a.navbar:hover {
+  /* text */
+  color:       var(--clr_fg);
+
+  /* background */
+  background-color: var(--clr_bg);
+}
+
+a.navbar:active {
+  /* text */
+  color:       var(--clr_fg);
+
+  /* background */
+  background-color: var(--clr_text_important);
+}
+
+
+div.navbar_entry {
+
 }
