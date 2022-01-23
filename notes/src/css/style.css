@@ -50,21 +50,21 @@
 /* AnonymousPro (open source) */
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./src/fonts/AnonymousPro/AnonymousPro-Regular.ttf") format("truetype");
+  src:         url("../fonts/AnonymousPro/AnonymousPro-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./src/fonts/AnonymousPro/AnonymousPro-Bold.ttf") format("truetype");
+  src:         url("../fonts/AnonymousPro/AnonymousPro-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./src/fonts/AnonymousPro/AnonymousPro-Italic.ttf") format("truetype");
+  src:         url("../fonts/AnonymousPro/AnonymousPro-Italic.ttf") format("truetype");
   font-style:  italic;
 }
 @font-face {
   font-family: "AnonymousPro";
-  src:         url("./src/fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf") format("truetype");
+  src:         url("../fonts/AnonymousPro/AnonymousPro-BoldItalic.ttf") format("truetype");
   font-weight: bold;
   font-style:  italic;
 }
@@ -72,21 +72,21 @@
 /* DejavuSansMono (open source) */
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono.ttf") format("truetype");
+  src:         url("../fonts/DejavuSansMono/DejaVuSansMono.ttf") format("truetype");
 }
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono-Bold.ttf") format("truetype");
+  src:         url("../fonts/DejavuSansMono/DejaVuSansMono-Bold.ttf") format("truetype");
   font-weight: bold;
 }
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono-Oblique.ttf") format("truetype");
+  src:         url("../fonts/DejavuSansMono/DejaVuSansMono-Oblique.ttf") format("truetype");
   font-style:  italic;
 }
 @font-face {
   font-family: "DejavuSansMono";
-  src:         url("./src/fonts/DejavuSansMono/DejaVuSansMono-BoldOblique.ttf") format("truetype");
+  src:         url("../fonts/DejavuSansMono/DejaVuSansMono-BoldOblique.ttf") format("truetype");
   font-weight: bold;
   font-style:  italic;
 }
@@ -94,7 +94,7 @@
 /* DejavuSansMono (open source) */
 @font-face {
   font-family: "VarelaRound";
-  src:         url("./src/fonts/VarelaRound/VarelaRound-Regular.ttf") format("truetype");
+  src:         url("../fonts/VarelaRound/VarelaRound-Regular.ttf") format("truetype");
 }
 /*******************************************************************************
 **                                  HTML body                                 **
@@ -243,77 +243,6 @@ hr {
   /*background-color: var(--clr_fg);*/
 }
 /*******************************************************************************
-**                                    code                                    **
-*******************************************************************************/
-div.code {
-  /* margin and padding */
-  margin-left: 1.5rem;
-
-  /* border */
-  display:          block;
-  background-color: black;
-  border-radius:    var(--roundness);
-}
-
-div.subcode {
-  /* margin and padding */
-  margin-left: 1rem;
-
-  /* border */
-  display:          block;
-  background-color: black;
-  border-radius:    var(--roundness);
-}
-
-code {
-  /* text */
-  color:       var(--clr_fg);
-  font-family: var(--font_cli);
-  font-size:   1rem;
-  font-weight: normal;
-  font-style:  normal;
-}
-
-code.root {
-  /* color */
-  color: var(--clr_cli_root);
-}
-
-code.user {
-  /* color */
-  color: var(--clr_cli_user);
-}
-
-code.cmd {
-  /* color */
-  color: var(--clr_cli_command);
-}
-
-code.showcmd {
-  /* color */
-  color: var(--clr_cli_showcommand);
-}
-
-code.block {
-  /* color */
-  color: var(--clr_cli_block);
-}
-
-code.dir {
-  /* color */
-  color: var(--clr_cli_dir);
-}
-
-code.file {
-  /* color */
-  color: var(--clr_cli_file);
-}
-
-code.custom {
-  /* font */
-  font-style: italic;
-}
-/*******************************************************************************
 **                                  paragraphs                                **
 *******************************************************************************/
 br {
@@ -414,6 +343,14 @@ ul.sub {
   list-style-type: disc;
 }
 
+ul.subsub {
+  /* margin and padding */
+  margin-left: 3.5rem;
+
+  /* list style */
+  list-style-type: disc;
+}
+
 li {
   /* margin and padding */
   margin-top:    var(--list_margin_vertical);
@@ -433,6 +370,77 @@ li {
 .important {
   /* text */
   color: var(--clr_text_important);
+}
+/*******************************************************************************
+**                                    code                                    **
+*******************************************************************************/
+div.code {
+  /* margin and padding */
+  /*margin-left: 1.5rem;*/
+
+  /* border */
+  display:          block;
+  background-color: black;
+  border-radius:    var(--roundness);
+}
+
+div.subcode {
+  /* margin and padding */
+  /*margin-left: 1rem;*/
+
+  /* border */
+  display:          block;
+  background-color: black;
+  border-radius:    var(--roundness);
+}
+
+code {
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_cli);
+  font-size:   1rem;
+  font-weight: normal;
+  font-style:  normal;
+}
+
+code.root {
+  /* color */
+  color: var(--clr_cli_root);
+}
+
+code.user {
+  /* color */
+  color: var(--clr_cli_user);
+}
+
+code.cmd {
+  /* color */
+  color: var(--clr_cli_command);
+}
+
+code.showcmd {
+  /* color */
+  color: var(--clr_cli_showcommand);
+}
+
+code.block {
+  /* color */
+  color: var(--clr_cli_block);
+}
+
+code.dir {
+  /* color */
+  color: var(--clr_cli_dir);
+}
+
+code.file {
+  /* color */
+  color: var(--clr_cli_file);
+}
+
+code.custom {
+  /* font */
+  font-style: italic;
 }
 /******************************* navigation bar *******************************/
 a.navbar {

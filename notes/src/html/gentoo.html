@@ -29,7 +29,8 @@
       <div class="content">
         <!-- Installation -->
         <div class="chapter">
-          <h1 id="section_1">Flash USB</h1>
+          <h1 id="s                <li>PGP signature:</li>
+ection_1">Flash USB</h1>
           <h2 id="section_1.1">Download ISO</h2>
           <ol>
             <li>Download Gentoo ISO from:</li>
@@ -37,13 +38,54 @@
               <li>
                 <a href="https://www.gentoo.org/downloads/">https://www.gentoo.org/downloads/</a>
               </li>
+              <li>
+                <a href="https://mirrors.163.com/gentoo//releases/amd64/autobuilds/current-install-amd64-minimal/">https://mirrors.163.com/gentoo//releases/amd64/autobuilds/current-install-amd64-minimal/</a>
+              </li>
             </ul>
             <li>Verify download:</li>
-            <div class="code">
-              <code class="user">user$ </code><!--
-           --><code class="showcmd">sha1sum </code><!--
-           --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code>
-            </div>
+            <ul class="sub">
+              <li>Hash algorithms:</li>
+              <ol class="sub">
+                <li>See current ISO SHA512 hash:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd">sha512sum </code><!--
+               --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso&gt; </code>
+                </div>
+                <li>See listed ISO SHA512 hash:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd">egrep [-B1] "[^/]&ltinstall-amd64-minimal-&ltrelease&gt.iso$&gt" </code><!--
+               --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso.DIGESTS&gt</code>
+                </div>
+                <li>Compare the values. Hash values have to be same!</li>
+              </ol>
+              <li>PGP signature:</li>
+              <ol class="sub">
+                <li>Find PGP key fingerprint:</li>
+                <ul>
+                  <li>
+                    <a href="https://www.gentoo.org/downloads/signatures/">https://www.gentoo.org/downloads/signatures/</a>
+                  </li>
+                </ul>
+                <li>Import Gentoo public key (Gentoo Linux Release Engineering):</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd"> gpg --keyserver hkps://keys.gentoo.org --recv-keys &ltKEY_FINGERPRINT&gt </code>
+                </div>
+                <li>Check if public key was imported:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd"> gpg --list-keys </code>
+                </div>
+                <li>Verify DIGESTS.asc file is from Gentoo developers:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd"> gpg --verify </code><!--
+               --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso.DIGESTS.asc&gt</code>
+                </div>
+              </ol>
+            </ul>
           </ol>
           <hr>
           <h2 id="section_1.2">USB preparation</h2>
@@ -71,7 +113,7 @@
             <div class="code">
               <code class="root">root# </code><!--
            --><code class="cmd">dd if=</code><!--
-           --><code class="file custom">&ltinstall-amd64-minimal-YYYYMMDDT170534Z.iso&gt; </code><!--
+           --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso&gt; </code><!--
            --><code class="cmd">of=</code><!--
            --><code class="block custom">&lt/dev/sdX&gt; </code><!--
            --><code class="cmd">[conv=fsync] [bs=1M] [status=progress] </code>
@@ -149,13 +191,13 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
               <li>Other disk info:</li>
               <ul class="sub">
                 <li>Disk size in bytes:</li>
-                <div class="subcode">
+                <div class="code">
                   <code class="root">livecd# </code><!--
                 --><code class="showcmd">blockdev [-v] --getsize64 </code><!--
                 --><code class="block custom">&lt/dev/sdX&gt </code>
                 </div>
                 <li>Disk read only status:</li>
-                <div class="subcode">
+                <div class="code">
                   <code class="root">livecd# </code><!--
                 --><code class="showcmd">blockdev [-v] --getro </code><!--
                 --><code class="block custom">&lt/dev/sdX&gt </code>
