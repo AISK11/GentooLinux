@@ -16,6 +16,7 @@
   --clr_red:         #EF2929;
   --clr_blue:        #548CFF;
   --clr_gentoo:      #4A406B;
+  --clr_cyan:        #9dcbff;
 
   /* cli colors */
   --clr_cli_root:        var(--clr_red);
@@ -37,6 +38,7 @@
   --clr_text:           var(--clr_white);
   --clr_text_important: var(--clr_red);
   --clr_link:           var(--clr_fg);
+  --clr_comment:        var(--clr_cyan);
 
   /* roundness */
   --roundness: 0rem;
@@ -423,6 +425,17 @@ li {
 /*******************************************************************************
 **                                    code                                    **
 *******************************************************************************/
+div.text {
+  /* margin and padding */
+  /*margin-left: 1.5rem;*/
+
+  /* border */
+  display:          block;
+  /*background-color: var(--clr_white);*/
+  background-color: var(--clr_bg);
+  border-radius:    var(--roundness);
+}
+
 div.code {
   /* margin and padding */
   /*margin-left: 1.5rem;*/
@@ -450,6 +463,28 @@ code {
   font-size:   1rem;
   font-weight: normal;
   font-style:  normal;
+}
+
+
+code.text {
+  /* dispaly */
+  display: block;
+
+  /* color */
+  /*color: black;*/
+  color:       var(--clr_fg);
+
+}
+
+code.comment {
+  /* dispaly */
+  display: block;
+
+  /* color */
+  color: var(--clr_comment);
+
+  /* font */
+  font-style: italic;
 }
 
 code.root {

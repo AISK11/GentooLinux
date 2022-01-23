@@ -29,8 +29,7 @@
       <div class="content">
         <!-- Installation -->
         <div class="chapter">
-          <h1 id="s                <li>PGP signature:</li>
-ection_1">Get Gentoo</h1>
+          <h1 id="section_1">Get Gentoo</h1>
           <h2 id="section_1.1">Download ISO</h2>
           <h3 id="section_1.1.1">Download</h3>
           <ol>
@@ -54,15 +53,15 @@ ection_1">Get Gentoo</h1>
                 <div class="code">
                   <code class="user">user$ </code><!--
                --><code class="showcmd">sha512sum </code><!--
-               --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso&gt; </code>
+               --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso&gt; </code>
                 </div>
                 <li>See listed ISO SHA512 hash:</li>
                 <div class="code">
                   <code class="user">user$ </code><!--
                --><code class="showcmd">egrep [-B1] "[^/]</code><!--
-               --><code class="showcmd custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso$&gt</code><!--
+               --><code class="showcmd custom">&lt;install-amd64-minimal-&lt;release&gt;.iso&gt;$</code><!--
                --><code class="showcmd">" </code><!--
-               --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso.DIGESTS&gt</code>
+               --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso.DIGESTS&gt;</code>
                 </div>
                 <li>Compare the values. Hash values have to be same.</li>
               </ol>
@@ -78,7 +77,7 @@ ection_1">Get Gentoo</h1>
                 <div class="code">
                   <code class="user">user$ </code><!--
                --><code class="cmd"> gpg --keyserver hkps://keys.gentoo.org --recv-keys </code><!--
-               --><code class="cmd custom"> &ltKEY_FINGERPRINT&gt </code>
+               --><code class="cmd custom"> &lt;KEY_FINGERPRINT&gt; </code>
                 </div>
                 <li>Check if public key was imported:</li>
                 <div class="code">
@@ -89,7 +88,7 @@ ection_1">Get Gentoo</h1>
                 <div class="code">
                   <code class="user">user$ </code><!--
                --><code class="showcmd"> gpg --verify </code><!--
-               --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso.DIGESTS.asc&gt</code>
+               --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso.DIGESTS.asc&gt;</code>
                 </div>
               </ol>
             </ul>
@@ -102,14 +101,14 @@ ection_1">Get Gentoo</h1>
             <div class="code">
               <code class="root">root# </code><!--
            --><code class="cmd">parted -s </code><!--
-           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
            --><code class="cmd">mktable gpt </code>
             </div>
             <li>Verify new partition table:</li>
             <div class="code">
               <code class="root">root# </code><!--
            --><code class="showcmd">parted </code><!--
-           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
            --><code class="showcmd">(p)rint [free] </code>
             </div>
           </ol>
@@ -120,9 +119,9 @@ ection_1">Get Gentoo</h1>
             <div class="code">
               <code class="root">root# </code><!--
            --><code class="cmd">dd if=</code><!--
-           --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso&gt; </code><!--
+           --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso&gt; </code><!--
            --><code class="cmd">of=</code><!--
-           --><code class="block custom">&lt/dev/sdX&gt; </code><!--
+           --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
            --><code class="cmd">[conv=fsync] [bs=1M] [status=progress] </code>
             </div>
           </ol>
@@ -187,13 +186,13 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
               <div class="code">
                 <code class="root">livecd# </code><!--
              --><code class="showcmd">parted </code><!--
-             --><code class="block custom">&lt/dev/sdX&gt </code><!--
+             --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
              --><code class="showcmd">(p)rint [free] </code>
               </div>
               <div class="code">
                 <code class="root">livecd# </code><!--
              --><code class="showcmd">gdisk -l </code><!--
-             --><code class="block custom">&lt/dev/sdX&gt </code>
+             --><code class="block custom">&lt;/dev/sdX&gt; </code>
               </div>
               <li>Other disk info:</li>
               <ul>
@@ -201,13 +200,13 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
                 <div class="code">
                   <code class="root">livecd# </code><!--
                 --><code class="showcmd">blockdev [-v] --getsize64 </code><!--
-                --><code class="block custom">&lt/dev/sdX&gt </code>
+                --><code class="block custom">&lt;/dev/sdX&gt; </code>
                 </div>
                 <li>Disk read only status:</li>
                 <div class="code">
                   <code class="root">livecd# </code><!--
                 --><code class="showcmd">blockdev [-v] --getro </code><!--
-                --><code class="block custom">&lt/dev/sdX&gt </code>
+                --><code class="block custom">&lt;/dev/sdX&gt; </code>
                 </div>
               </ul>
             </ol>
@@ -222,17 +221,17 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
               <div class="code">
                 <code class="root">livecd# </code><!--
              --><code class="showcmd">badblocks [-b 4096] [-v] [-s] </code><!--
-             --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
+             --><code class="block custom">&lt;/dev/sdX[Y]&gt; </code><!--
              --><code class="showcmd">| tee -a </code><!--
-             --><code class="file custom">&ltOUTPUT_FILE&gt </code>
+             --><code class="file custom">&lt;OUTPUT_FILE&gt; </code>
               </div>
               <li>Read-write test (ERASE ALL DATA):</li>
               <div class="code">
                 <code class="root">livecd# </code><!--
              --><code class="cmd">badblocks -w [-t 0xaa] [-b 4096] [-v] [-s] </code><!--
-             --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
+             --><code class="block custom">&lt;/dev/sdX[Y]&gt; </code><!--
              --><code class="cmd">| tee -a </code><!--
-             --><code class="file custom">&ltOUTPUT_FILE&gt </code>
+             --><code class="file custom">&lt;OUTPUT_FILE&gt; </code>
               </div>
             </ul>
           </ol>
@@ -255,7 +254,7 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
            --><code class="showcmd">find </code><!--
            --><code class="dir">/sys/ </code><!--
            --><code class="showcmd">| egrep "drivers.*</code><!--
-           --><code class="showcmd custom">&ltPCI_ADDRESS&gt" </code>
+           --><code class="showcmd custom">&lt;PCI_ADDRESS&gt;" </code>
             </div>
             <li>Optionally load module:</li>
             <ol class="sub">
@@ -269,23 +268,203 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
               <div class="code">
                 <code class="root">livecd# </code><!--
              --><code class="cmd">modprobe </code><!--
-             --><code class="cmd custom">&ltMODULE-NAME&gt </code>
+             --><code class="cmd custom">&lt;MODULE-NAME&gt; </code>
               </div>
               <li>Verify if module is loaded:</li>
               <div class="code">
                 <code class="root">livecd# </code><!--
              --><code class="showcmd">lsmod | egrep </code><!--
-             --><code class="showcmd custom">&ltMODULE-NAME&gt </code>
+             --><code class="showcmd custom">&lt;MODULE-NAME&gt; </code>
               </div>
             </ol>
           </ol>
           <h3>Connecting to the network</h3>
+          <ul>
+            <li>Ethernet:</li>
+            <ul class="sub">
+              <li>DHCP:</li>
+              <ol>
+                <li>Bring interface UP:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+               --><code class="cmd">ip l set </code><!--
+               --><code class="cmd custom">&lt;eth0&gt; </code><!--
+               --><code class="cmd">up </code>
+                </div>
+                <li>Use DHCP for interface:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+               --><code class="cmd">dhcpcd [-4|-6] </code><!--
+               --><code class="cmd custom">&lt;eth0&gt; </code>
+                </div>
+              </ol>
+              <li>Static:</li>
+              <ol>
+                <li>Bring interface UP:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+               --><code class="cmd">ip l set </code><!--
+               --><code class="cmd custom">&lt;eth0&gt; </code><!--
+               --><code class="cmd">up </code>
+                </div>
+                <li>Apply static IP:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+               --><code class="cmd">ip a add </code><!--
+               --><code class="cmd custom">&lt;IP_ADDRESS&gt;</code><!--
+               --><code class="cmd custom">/</code><!--
+               --><code class="cmd custom">&lt;24&gt; </code><!--
+               --><code class="cmd">dev </code><!--
+               --><code class="cmd custom">&lt;eth0&gt; </code>
+                </div>
+                <li>Add default route:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+               --><code class="cmd">ip r add default via </code><!--
+               --><code class="cmd custom">&lt;GATEWAY_IP&gt;</code>
+                </div>
+              </ol>
+            </ul>
+            <li>Wi-Fi:</li>
+            <ol>
+              <li>Unblock wlan in rfkill:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="cmd">rfkill unblock wlan </code>
+              </div>
+              <li>Bring interface UP:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="cmd">ip l set </code><!--
+             --><code class="cmd custom">&lt;wlan0&gt; </code><!--
+             --><code class="cmd">up </code>
+              </div>
+              <li>Scan for available APs:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+              --><code class="showcmd">iwlist </code><!--
+              --><code class="showcmd custom">&lt;wlan0&gt; </code><!--
+              --><code class="showcmd">scan [| grep -i "ssid"] </code>
+              </div>
+              <li>Configure wpa_supplicant:</li>
+              <p>File: </p><p class="file">/etc/wpa_supplicant/wpa_supplicant.conf</p>
+              <div class="text">
+                <code class="comment">## Basic settings and language for zones.</code>
+                <code class="text">ctrl_interface=/run/wpa_supplicant</code>
+                <code class="text">update_config=1</code>
+                <code class="text">country=$lt2-LETTER-ISO-CODE&gt;</code>
+                <code class="comment">## Password protected.</code>
+                <code class="text">network={</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;ssid="&lt;ESSID&gt;"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;scan_ssid=1 ## Find hidden network</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;key_mgmt=WPA-PSK</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;psk="&lt;PASSWORD&gt;"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;#psk=&lt;32byte-HEX-NUMBER&gt;</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;priority=1 ## To which WiFi connect first</code>
+                <code class="text">}</code>
+                <code class="comment">## WPA-EAP protected.</code>
+                <code class="text">network={</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;ssid="&lt;ESSID&gt;"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;scan_ssid=1 ## Find hidden network</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;key_mgmt=WPA-EAP</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;#eap=PEAP</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;identity="&lt;USERNAME&gt;@&lt;DOMAIN&gt;"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;password="&lt;PASSWORD&gt;"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;#psk=&lt;32byte-HEX-NUMBER&gt;</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;#ca_cert="/etc/cert/ca.pem"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;#phase1="peaplabel=0"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;phase2="auth=MSCHAPV2"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;priority=2 ## To which WiFi connect first</code>
+                <code class="text">}</code>
+                <code class="comment">## Unprotected.</code>
+                <code class="text">network={</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;ssid="&lt;ESSID&gt;"</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;scan_ssid=1 ##Find hidden network</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;key_mgmt=NONE</code>
+                <code class="text">&ensp;&ensp;&ensp;&ensp;priority=3 ## To which WiFi connect first</code>
+                <code class="text">}</code>
+              </div>
+              <li>Run wpa_supplicant on Wi-Fi interface:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="cmd">wpa_supplicant -B -D wext -i </code><!--
+             --><code class="cmd custom">&lt;wlan0&gt; </code><!--
+             --><code class="cmd">-c </code><!--
+             --><code class="file custom">&lt;/etc/wpa_supplicant/wpa_supplicant.conf&gt;</code>
+              </div>
+              <li>Verify connection to the AP:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+              --><code class="showcmd">iwconfig </code><!--
+              --><code class="showcmd custom">[wlan0] </code>
+              </div>
+              <li>Set up IP address:</li>
+              <ul class="sub">
+                <li>DHCP:</li>
+                <ol class="sub">
+                  <li>Bring interface UP:</li>
+                  <div class="code">
+                    <code class="root">livecd# </code><!--
+                 --><code class="cmd">ip l set </code><!--
+                 --><code class="cmd custom">&lt;wlan0&gt; </code><!--
+                 --><code class="cmd">up </code>
+                  </div>
+                  <li>Use DHCP for interface:</li>
+                  <div class="code">
+                    <code class="root">livecd# </code><!--
+                 --><code class="cmd">dhcpcd [-4|-6] </code><!--
+                 --><code class="cmd custom">&lt;wlan0&gt; </code>
+                  </div>
+                </ol>
+                <li>Static:</li>
+                <ol class="sub">
+                  <li>Bring interface UP:</li>
+                  <div class="code">
+                    <code class="root">livecd# </code><!--
+                 --><code class="cmd">ip l set </code><!--
+                 --><code class="cmd custom">&lt;wlan0&gt; </code><!--
+                 --><code class="cmd">up </code>
+                  </div>
+                  <li>Apply static IP:</li>
+                  <div class="code">
+                    <code class="root">livecd# </code><!--
+                 --><code class="cmd">ip a add </code><!--
+                 --><code class="cmd custom">&lt;IP_ADDRESS&gt;</code><!--
+                 --><code class="cmd custom">/</code><!--
+                 --><code class="cmd custom">&lt;24&gt; </code><!--
+                 --><code class="cmd">dev </code><!--
+                 --><code class="cmd custom">&lt;wlan0&gt; </code>
+                  </div>
+                  <li>Add default route:</li>
+                  <div class="code">
+                    <code class="root">livecd# </code><!--
+                 --><code class="cmd">ip r add default via </code><!--
+                 --><code class="cmd custom">&lt;GATEWAY_IP&gt;</code>
+                  </div>
+                </ol>
+              </ol>
+          </ul>
+          <h3 id="section_3.1.3">DNS configuration</h3>
+          <ol>
+            <li>Add DNS servers:</li>
+            <p>File: </p><p class="file">/etc/resolv.conf</p>
+            <div class="text">
+              <code class="comment">## Uncensored DNS - Denmark - Unicast</code>
+              <code class="text">nameserver 89.233.43.71</code>
+              <code class="comment">## CZ.NIC</code>
+              <code class="text">#nameserver 193.17.47.1</code>
+              <code class="text">#nameserver 185.43.135.1</code>
+              <code class="comment">## Quad9</code>
+              <code class="text">nameserver 1.1.1.1</code>
+              <code class="text">nameserver 1.0.0.1</code>
+            </div>
+          </ol>
+          <hr>
+          <h2 id="section_3.2">Disk partitioning</h2>
 
 
           <hr>
         </div>
-
-
 
 
       </div>
