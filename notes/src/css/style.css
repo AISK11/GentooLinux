@@ -182,7 +182,7 @@ h1 {
   /* text */
   color:       var(--clr_fg);
   font-family: var(--font_header);
-  font-size:   2.5rem;
+  font-size:   3rem;
   font-weight: bold;
   font-style:  normal;
 
@@ -200,6 +200,9 @@ h2::before {
 }
 
 h2 {
+  /* automatic heading numbering */
+  counter-reset: num_h3 0;
+
   /* margin and padding */
   margin-top:    0rem;
   margin-bottom: var(--list_margin_vertical);
@@ -210,7 +213,35 @@ h2 {
   /* text */
   color:       var(--clr_fg);
   font-family: var(--font_header);
-  font-size:   1.75rem;
+  font-size:   2.25rem;
+  font-weight: bold;
+  font-style:  normal;
+
+  /* font background */
+  background-color: var(--clr_bg);
+
+  /* colors */
+  color: var(--clr_fg);
+}
+
+h3::before {
+  /* automatic heading numbering */
+	content:           counter(num_h1)"." counter(num_h2)"." counter(num_h3)" ";
+	counter-increment: num_h3 1;
+}
+
+h3 {
+  /* margin and padding */
+  margin-top:    0rem;
+  margin-bottom: var(--list_margin_vertical);
+  margin-left:   0rem;
+  margin-right:  0rem;
+  padding:       0rem;
+
+  /* text */
+  color:       var(--clr_fg);
+  font-family: var(--font_header);
+  font-size:   1.5rem;
   font-weight: bold;
   font-style:  normal;
 
@@ -273,6 +304,24 @@ p.bold {
 p.italic {
   font-style: italic;
 }
+
+p.block {
+  /* color */
+  color: var(--clr_cli_block);
+  font-weight: bold;
+}
+
+p.dir {
+  /* color */
+  color: var(--clr_cli_dir);
+  font-weight: bold;
+}
+
+p.file {
+  /* color */
+  color: var(--clr_cli_file);
+  font-weight: bold;
+}
 /*******************************************************************************
 **                                   links                                    **
 *******************************************************************************/
@@ -319,7 +368,7 @@ ul {
   /* margin and padding */
   margin-top:    var(--list_margin_vertical);
   margin-bottom: var(--list_margin_vertical);
-  margin-left:   1rem;
+  margin-left:   1.75rem;
   margin-right:  0rem;
   padding:       0rem;
 

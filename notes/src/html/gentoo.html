@@ -19,7 +19,7 @@
       navigation menu left
       -->
       <div class="navbar">
-        <a class="navbar" href="#section_1">1 Flash USB</a>
+        <a class="navbar" href="#section_1">1 Get Gentoo</a>
         <a class="navbar" href="#section_2">2 Pre-installation</a>
         <a class="navbar" href="#section_3">3 Installation</a>
       </div>
@@ -30,11 +30,12 @@
         <!-- Installation -->
         <div class="chapter">
           <h1 id="s                <li>PGP signature:</li>
-ection_1">Flash USB</h1>
+ection_1">Get Gentoo</h1>
           <h2 id="section_1.1">Download ISO</h2>
+          <h3 id="section_1.1.1">Download</h3>
           <ol>
             <li>Download Gentoo ISO from:</li>
-            <ul class="sub">
+            <ul>
               <li>
                 <a href="https://www.gentoo.org/downloads/">https://www.gentoo.org/downloads/</a>
               </li>
@@ -42,8 +43,11 @@ ection_1">Flash USB</h1>
                 <a href="https://mirrors.163.com/gentoo//releases/amd64/autobuilds/current-install-amd64-minimal/">https://mirrors.163.com/gentoo//releases/amd64/autobuilds/current-install-amd64-minimal/</a>
               </li>
             </ul>
+          </ol>
+          <h3 id="section_1.1.2">Download verification</h3>
+          <ol>
             <li>Verify download:</li>
-            <ul class="sub">
+            <ul>
               <li>Hash algorithms:</li>
               <ol class="sub">
                 <li>See current ISO SHA512 hash:</li>
@@ -55,15 +59,17 @@ ection_1">Flash USB</h1>
                 <li>See listed ISO SHA512 hash:</li>
                 <div class="code">
                   <code class="user">user$ </code><!--
-               --><code class="showcmd">egrep [-B1] "[^/]&ltinstall-amd64-minimal-&ltrelease&gt.iso$&gt" </code><!--
+               --><code class="showcmd">egrep [-B1] "[^/]</code><!--
+               --><code class="showcmd custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso$&gt</code><!--
+               --><code class="showcmd">" </code><!--
                --><code class="file custom">&ltinstall-amd64-minimal-&ltrelease&gt.iso.DIGESTS&gt</code>
                 </div>
-                <li>Compare the values. Hash values have to be same!</li>
+                <li>Compare the values. Hash values have to be same.</li>
               </ol>
               <li>PGP signature:</li>
               <ol class="sub">
                 <li>Find PGP key fingerprint:</li>
-                <ul>
+                <ul class="sub">
                   <li>
                     <a href="https://www.gentoo.org/downloads/signatures/">https://www.gentoo.org/downloads/signatures/</a>
                   </li>
@@ -71,7 +77,8 @@ ection_1">Flash USB</h1>
                 <li>Import Gentoo public key (Gentoo Linux Release Engineering):</li>
                 <div class="code">
                   <code class="user">user$ </code><!--
-               --><code class="showcmd"> gpg --keyserver hkps://keys.gentoo.org --recv-keys &ltKEY_FINGERPRINT&gt </code>
+               --><code class="cmd"> gpg --keyserver hkps://keys.gentoo.org --recv-keys </code><!--
+               --><code class="cmd custom"> &ltKEY_FINGERPRINT&gt </code>
                 </div>
                 <li>Check if public key was imported:</li>
                 <div class="code">
@@ -125,12 +132,12 @@ ection_1">Flash USB</h1>
             <li>Reboot computer:</li>
               <div class="code">
                 <code class="root">root# </code><!--
-              --><code class="cmd" >reboot</code>
+             --><code class="cmd" >reboot</code>
               </div>
             <li>Make sure, that secure boot is disabled:</li>
             <ol class="sub">
               <li>During POST press key to access BIOS/UEFI:</li>
-              <ul class="sub">
+              <ul>
                 <li>
                   <a href="https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/">https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/</a>
                 </li>
@@ -141,7 +148,7 @@ ection_1">Flash USB</h1>
             <li>Boot from USB:</li>
             <ol class="sub">
               <li>During POST press key to access Boot Menu:</li>
-              <ul class="sub">
+              <ul>
                 <li>
                   <a href="https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/">https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/</a>
                 </li>
@@ -189,7 +196,7 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
              --><code class="block custom">&lt/dev/sdX&gt </code>
               </div>
               <li>Other disk info:</li>
-              <ul class="sub">
+              <ul>
                 <li>Disk size in bytes:</li>
                 <div class="code">
                   <code class="root">livecd# </code><!--
@@ -206,32 +213,76 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
             </ol>
           </ol>
           <hr>
-          <h2 id="section_2.1">Check disk for bad sectors</h2>
+          <h2 id="section_2.2">Check disk for bad sectors</h2>
           <ol>
             <li class="important">Unmount all disk partitions!</li>
-            <li>Read-only test:</li>
-            <div class="code">
-              <code class="root">livecd# </code><!--
-           --><code class="cmd">badblocks [-b 4096] [-v] [-s] </code><!--
-           --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
-           --><code class="cmd">| tee -a </code><!--
-           --><code class="file custom">&ltOUTPUT_FILE&gt </code>
-            </div>
-            <li>Read-write test (ERASE ALL DATA):</li>
-            <div class="code">
-              <code class="root">livecd# </code><!--
-           --><code class="cmd">badblocks -w [-t 0xaa] [-b 4096] [-v] [-s] </code><!--
-           --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
-           --><code class="cmd">| tee -a </code><!--
-           --><code class="file custom">&ltOUTPUT_FILE&gt </code>
-            </div>
+            <li>Perform disk test:</li>
+            <ul>
+              <li>Read-only test:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">badblocks [-b 4096] [-v] [-s] </code><!--
+             --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
+             --><code class="showcmd">| tee -a </code><!--
+             --><code class="file custom">&ltOUTPUT_FILE&gt </code>
+              </div>
+              <li>Read-write test (ERASE ALL DATA):</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="cmd">badblocks -w [-t 0xaa] [-b 4096] [-v] [-s] </code><!--
+             --><code class="block custom">&lt/dev/sdX[Y]&gt </code><!--
+             --><code class="cmd">| tee -a </code><!--
+             --><code class="file custom">&ltOUTPUT_FILE&gt </code>
+              </div>
+            </ul>
           </ol>
           <hr>
         </div>
         <!-- Installation -->
         <div class="chapter">
           <h1 id="section_3">Installation</h1>
+          <h2 id="section_3.1">Network connection</h2>
+          <h3>Network drivers</h3>
+          <ol>
+            <li>Find present network devices (ethernet, wifi):</li>
+            <div class="code">
+              <code class="user">livecd$ </code><!--
+           --><code class="showcmd">lspci | egrep [-i] -e eth [-e wi] </code>
+            </div>
+            <li>Check network drivers:</li>
+            <div class="code">
+              <code class="root">livecd# </code><!--
+           --><code class="showcmd">find </code><!--
+           --><code class="dir">/sys/ </code><!--
+           --><code class="showcmd">| egrep "drivers.*</code><!--
+           --><code class="showcmd custom">&ltPCI_ADDRESS&gt" </code>
+            </div>
+            <li>Optionally load module:</li>
+            <ol class="sub">
+              <li>Module directory:</li>
+              <ul>
+                <li>
+                  <p class="dir">/lib/modules/$(uname -r)/kernel/drivers/</p><p>[</p><p class="dir">net/</p><p>]</p>
+                </li>
+              </ul>
+              <li>Load module:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="cmd">modprobe </code><!--
+             --><code class="cmd custom">&ltMODULE-NAME&gt </code>
+              </div>
+              <li>Verify if module is loaded:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">lsmod | egrep </code><!--
+             --><code class="showcmd custom">&ltMODULE-NAME&gt </code>
+              </div>
+            </ol>
+          </ol>
+          <h3>Connecting to the network</h3>
 
+
+          <hr>
         </div>
 
 
@@ -239,7 +290,6 @@ sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
 
       </div>
     </div>
-
   </body>
 </html>
 <!--
