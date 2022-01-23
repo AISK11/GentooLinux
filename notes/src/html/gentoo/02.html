@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="AISK">
+    <meta name="description" content="Gentoo linux notes">
+    <meta name="keywords" content="linux, gentoo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-installation</title>
+    <!-- Load CSS style file -->
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <div class="document">
+      <!-- navigation menu -->
+      <div class="navbar">
+        <a class="navbar" href="./01.html">Get Gentoo</a>
+        <a class="navbar" href="#chapter">Pre-installation</a>
+        <a class="navbar" href="./03.html">Installation</a>
+      </div>
+      <!-- notes -->
+      <div class="content">
+        <div class="chapter">
+          <h1 id="chapter">Pre-installation</h1>
+          <h2>Disk information gathering</h2>
+            <p class="bold">Sector: </p>
+            <p>smallest unit size on a disk. Usually 512 bytes, but some hard disks
+have 4096.</p>
+            <br>
+            <p class="bold">Block: </p>
+            <p>allocation size that FS uses. Cannot be smaller than size of the
+sector, but can be group of sectors (4096b: 8 x 512b sectors).</p>
+          <ol>
+            <li>Gather information about disks:</li>
+            <ol class="sub">
+              <li>Find disks:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">lsblk [-p] [-f] [-a] </code>
+              </div>
+              <div class="code">
+                <code class="user">livecd$ </code><!--
+             --><code class="showcmd">fdisk -l </code><!--
+             --><code class="block custom">[/dev/sdX] </code>
+              </div>
+              <li>Find disk partitions:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">parted </code><!--
+             --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
+             --><code class="showcmd">(p)rint [free] </code>
+              </div>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">gdisk -l </code><!--
+             --><code class="block custom">&lt;/dev/sdX&gt; </code>
+              </div>
+              <li>Other disk info:</li>
+              <ul>
+                <li>Disk size in bytes:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+                --><code class="showcmd">blockdev [-v] --getsize64 </code><!--
+                --><code class="block custom">&lt;/dev/sdX&gt; </code>
+                </div>
+                <li>Disk read only status:</li>
+                <div class="code">
+                  <code class="root">livecd# </code><!--
+                --><code class="showcmd">blockdev [-v] --getro </code><!--
+                --><code class="block custom">&lt;/dev/sdX&gt; </code>
+                </div>
+              </ul>
+            </ol>
+          </ol>
+          <hr>
+          <h2>Check disk for bad sectors</h2>
+          <ol>
+            <li class="important">Unmount all disk partitions!</li>
+            <li>Perform disk test:</li>
+            <ul>
+              <li>Read-only test:</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="showcmd">badblocks [-b 4096] [-v] [-s] </code><!--
+             --><code class="block custom">&lt;/dev/sdX[Y]&gt; </code><!--
+             --><code class="showcmd">| tee -a </code><!--
+             --><code class="file custom">&lt;OUTPUT_FILE&gt; </code>
+              </div>
+              <li>Read-write test (ERASE ALL DATA):</li>
+              <div class="code">
+                <code class="root">livecd# </code><!--
+             --><code class="cmd">badblocks -w [-t 0xaa] [-b 4096] [-v] [-s] </code><!--
+             --><code class="block custom">&lt;/dev/sdX[Y]&gt; </code><!--
+             --><code class="cmd">| tee -a </code><!--
+             --><code class="file custom">&lt;OUTPUT_FILE&gt; </code>
+              </div>
+            </ul>
+          </ol>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -166,13 +166,13 @@ div.navbar {
 *******************************************************************************/
 h1::before {
   /* automatic heading numbering */
-	content:           counter(num_h1)" ";
-	counter-increment: num_h1 1;
+	/*content:           counter(num_h1)" ";*/
+	/*counter-increment: num_h1 1;*/
 }
 
 h1 {
   /* automatic heading numbering */
-  counter-reset: num_h2 0;
+  /*counter-reset: num_h2 0;*/
 
   /* margin and padding */
   margin-top:    0rem;
@@ -197,13 +197,13 @@ h1 {
 
 h2::before {
   /* automatic heading numbering */
-	content:           counter(num_h1)"." counter(num_h2)" ";
-	counter-increment: num_h2 1;
+	/*content:           counter(num_h1)"." counter(num_h2)" ";*/
+	/*counter-increment: num_h2 1;*/
 }
 
 h2 {
   /* automatic heading numbering */
-  counter-reset: num_h3 0;
+  /*counter-reset: num_h3 0;*/
 
   /* margin and padding */
   margin-top:    0rem;
@@ -228,8 +228,8 @@ h2 {
 
 h3::before {
   /* automatic heading numbering */
-	content:           counter(num_h1)"." counter(num_h2)"." counter(num_h3)" ";
-	counter-increment: num_h3 1;
+	/*content:           counter(num_h1)"." counter(num_h2)"." counter(num_h3)" ";*/
+	/*counter-increment: num_h3 1;*/
 }
 
 h3 {

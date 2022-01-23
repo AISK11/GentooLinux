@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="AISK">
+    <meta name="description" content="Gentoo linux notes">
+    <meta name="keywords" content="linux, gentoo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Gentoo</title>
+    <!-- Load CSS style file -->
+    <link rel="stylesheet" href="../../css/style.css">
+  </head>
+  <body>
+    <div class="document">
+      <!-- navigation menu -->
+      <div class="navbar">
+        <a class="navbar" href="#chapter">Get Gentoo</a>
+        <a class="navbar" href="./02.html">Pre-installation</a>
+        <a class="navbar" href="./03.html">Installation</a>
+      </div>
+      <!-- notes -->
+      <div class="content">
+        <div class="chapter">
+          <h1 id="chapter">Get Gentoo</h1>
+          <h2>Download ISO</h2>
+          <h3>Download</h3>
+          <ol>
+            <li>Download Gentoo ISO from:</li>
+            <ul>
+              <li>
+                <a href="https://www.gentoo.org/downloads/">https://www.gentoo.org/downloads/</a>
+              </li>
+              <li>
+                <a href="https://mirrors.163.com/gentoo//releases/amd64/autobuilds/current-install-amd64-minimal/">https://mirrors.163.com/gentoo//releases/amd64/autobuilds/current-install-amd64-minimal/</a>
+              </li>
+            </ul>
+          </ol>
+          <h3>Download verification</h3>
+          <ol>
+            <li>Verify download:</li>
+            <ul>
+              <li>Hash algorithms:</li>
+              <ol class="sub">
+                <li>See current ISO SHA512 hash:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd">sha512sum </code><!--
+               --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso&gt; </code>
+                </div>
+                <li>See listed ISO SHA512 hash:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd">egrep [-B1] "[^/]</code><!--
+               --><code class="showcmd custom">&lt;install-amd64-minimal-&lt;release&gt;.iso&gt;$</code><!--
+               --><code class="showcmd">" </code><!--
+               --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso.DIGESTS&gt;</code>
+                </div>
+                <li>Compare the values. Hash values have to be same.</li>
+              </ol>
+              <li>PGP signature:</li>
+              <ol class="sub">
+                <li>Find PGP key fingerprint:</li>
+                <ul class="sub">
+                  <li>
+                    <a href="https://www.gentoo.org/downloads/signatures/">https://www.gentoo.org/downloads/signatures/</a>
+                  </li>
+                </ul>
+                <li>Import Gentoo public key (Gentoo Linux Release Engineering):</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="cmd"> gpg --keyserver hkps://keys.gentoo.org --recv-keys </code><!--
+               --><code class="cmd custom"> &lt;KEY_FINGERPRINT&gt; </code>
+                </div>
+                <li>Check if public key was imported:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd"> gpg --list-keys </code>
+                </div>
+                <li>Verify DIGESTS.asc file is from Gentoo developers:</li>
+                <div class="code">
+                  <code class="user">user$ </code><!--
+               --><code class="showcmd"> gpg --verify </code><!--
+               --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso.DIGESTS.asc&gt;</code>
+                </div>
+              </ol>
+            </ul>
+          </ol>
+          <hr>
+          <h2>USB preparation</h2>
+          <ol>
+            <li class="important">Unmount all USB partitions!</li>
+            <li>Create GPT partition table:</li>
+            <div class="code">
+              <code class="root">root# </code><!--
+           --><code class="cmd">parted -s </code><!--
+           --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
+           --><code class="cmd">mktable gpt </code>
+            </div>
+            <li>Verify new partition table:</li>
+            <div class="code">
+              <code class="root">root# </code><!--
+           --><code class="showcmd">parted </code><!--
+           --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
+           --><code class="showcmd">(p)rint [free] </code>
+            </div>
+          </ol>
+          <hr>
+          <h2>Flash USB with ISO</h2>
+          <ol>
+            <li>Flash ISO to USB:</li>
+            <div class="code">
+              <code class="root">root# </code><!--
+           --><code class="cmd">dd if=</code><!--
+           --><code class="file custom">&lt;install-amd64-minimal-&lt;release&gt;.iso&gt; </code><!--
+           --><code class="cmd">of=</code><!--
+           --><code class="block custom">&lt;/dev/sdX&gt; </code><!--
+           --><code class="cmd">[conv=fsync] [bs=1M] [status=progress] </code>
+            </div>
+          </ol>
+          <hr>
+          <h2>Boot from USB</h2>
+          <ol>
+            <li>Reboot computer:</li>
+              <div class="code">
+                <code class="root">root# </code><!--
+             --><code class="cmd" >reboot</code>
+              </div>
+            <li>Make sure, that secure boot is disabled:</li>
+            <ol class="sub">
+              <li>During POST press key to access BIOS/UEFI:</li>
+              <ul>
+                <li>
+                  <a href="https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/">https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/</a>
+                </li>
+              </ul>
+              <li>Disable secure boot (if enabled).</li>
+              <li>Reboot PC.</li>
+            </ol>
+            <li>Boot from USB:</li>
+            <ol class="sub">
+              <li>During POST press key to access Boot Menu:</li>
+              <ul>
+                <li>
+                  <a href="https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/">https://techofide.com/blogs/boot-menu-option-keys-for-all-computers-and-laptops-updated-list-2021-techofide/</a>
+                </li>
+              </ul class="sub">
+              <li>Select USB entry.</li>
+            </ol>
+          </ol>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
